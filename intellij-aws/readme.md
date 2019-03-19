@@ -83,5 +83,11 @@ SAM CLI, version 0.12.0
 
 ## Invoke Lambda Function Remotely
 
+- In `AWS Explorer`, click on `Lambda`, select `Hello Lambda` function, select `Run [Remote] HelloLambda...`
+- Change the payload to `{}`
+  ![Run Remote](run-remote.png)
+- Click on `Run`
+  ![Run Remote Output](run-remote-output.png)
+
 ## Invoke Lambda Function Using CloudFormation
 

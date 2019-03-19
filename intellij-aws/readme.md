@@ -77,7 +77,9 @@ SAM CLI, version 0.12.0
 - Click on Lambda icon, click on `Debug [Local] App`
   ![Debug Local App](debug-local-app.png)
 - Watch for the debugger to show frames and variables:
-  ![Run Local Output](debug-local-output.png)
+  ![Debug Local Output](debug-local-output.png)
+- Click on the green arrow in debugger console to resume execution, see the results:
+  ![Debug Local Output Console](debug-local-output-console.png)
 
 ## Invoke Lambda Function Remotely
 

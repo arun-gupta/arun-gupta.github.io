@@ -33,19 +33,19 @@ SAM CLI, version 0.12.0
 
 ## Setup Plugin
 
-- IntelliJ IDEA, Preferences
+- IntelliJ IDEA, `Preferences`
 - Subscribe to EAP builds as explained at https://github.com/aws/aws-toolkit-jetbrains#eap-builds
 - Search for `plugins`
 - Search for `aws tooklkit`, select. Verify the version number is `v1.2-EAP.2019.03.14` at least and click on `Install`.
 - Click on `Restart IDE` to restart the IDE
 
-## Create new application
+## Create New Application
 
 - `Create New Project`
 - `AWS`, `AWS Serverless Application`, `Next`
-- Check the image intellij-hello-serverless.png
+![New Project](hello-serverless-new-project.png)
 
-## Show project
+## Show Project
 
 - Expand project, `HelloWorldFunction`, `src`, `main`, `java`, `helloworld`
 - Explain `App.java`, standard Java imports and AWS SDK

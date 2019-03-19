@@ -45,7 +45,7 @@
   path = "src/main.rs"
   ```
 
-- Edit `src/main.rs` to match code from the https://aws.amazon.com/blogs/opensource/rust-runtime-for-aws-lambda/[blog]
+- Edit `src/main.rs` to match code from the [blog](https://aws.amazon.com/blogs/opensource/rust-runtime-for-aws-lambda/)
 - Build the function:
 
   ```

@@ -68,8 +68,16 @@ SAM CLI, version 0.12.0
   ![Run Local App](run-local-app.png)
 - Change the payload to `{}`
   ![Run Local Edit Config](run-local-edit-config.png)
-- `Run`
+- Click on `Run` to run the function locally
   ![Run Local Output](run-local-output.png)
+
+## Debug Lambda Function Locally
+
+- Setup a breakpoint in the code
+- Click on Lambda icon, click on `Debug [Local] App`
+  ![Debug Local App](debug-local-app.png)
+- Watch for the debugger to show frames and variables:
+  ![Run Local Output](debug-local-output.png)
 
 ## Invoke Lambda Function Remotely
 

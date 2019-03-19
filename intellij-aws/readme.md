@@ -64,6 +64,8 @@ SAM CLI, version 0.12.0
 
 ## Invoke Lambda Function Locally
 
+This uses SAM Local CLI.
+
 - Click on Lambda icon, click on `Run [Local] App`
   ![Run Local App](run-local-app.png)
 - Change the payload to `{}`
@@ -72,6 +74,8 @@ SAM CLI, version 0.12.0
   ![Run Local Output](run-local-output.png)
 
 ## Debug Lambda Function Locally
+
+This uses SAM Local CLI.
 
 - Setup a breakpoint in the code
 - Click on Lambda icon, click on `Debug [Local] App`
@@ -83,6 +87,8 @@ SAM CLI, version 0.12.0
 
 ## Invoke Lambda Function Remotely
 
+This uses AWS SDK.
+
 - In `AWS Explorer`, click on `Lambda`, select `Hello Lambda` function, select `Run [Remote] HelloLambda...`
   ![Run Remote](run-remote.png)
 - Change the payload to `{}`
@@ -91,4 +97,20 @@ SAM CLI, version 0.12.0
   ![Run Remote Output](run-remote-output.png)
 
 ## Invoke Lambda Function Using CloudFormation
+
+This uses CloudFormation.
+
+- In `Project Explorer`, open `template.yaml`. This is SAM template.
+- Right click, select on `Deploy Serverless Application`
+  ![Deploy Serverless App](deploy-serverless-app.png)
+- Give a name, specify the bucket
+  ![Create Stack](create-stack.png)
+- Click on `Deploy`. It takes a few minutes for the CloudFormation stack to complete and then shows the output:
+  ![CloudFormation Output](cloudformation-output.png)
+- In `AWS Explorer`, expand `Lambda` and `CloudFormation` to see the newly created stack and the function
+  ![CloudFormation Output](cloudformation-explorer.png)
+- Right-click on the function, select `Run [Remote] hello-serve...`
+  ![CloudFormation Run Config](cloudformation-run-config.png)
+- Click on `Run`, takes a few seconds and then shows the output:
+  ![CloudFormation Run Output](cloudformation-run-output.png)
 

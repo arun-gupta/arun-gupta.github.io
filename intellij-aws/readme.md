@@ -43,20 +43,19 @@ SAM CLI, version 0.12.0
 
 - `Create New Project`
 - `AWS`, `AWS Serverless Application`, `Next`
-![New Project](hello-serverless-new-project.png)
+- Specify the value as shown:
+  ![New Project](new-project.png)
+- Click on `Maven` on top-right, add on `+`, select `pom.xml`
 
-## Show Project
+## Create Lambda Function
 
 - Expand project, `HelloWorldFunction`, `src`, `main`, `java`, `helloworld`
 - Explain `App.java`, standard Java imports and AWS SDK
-
-## Deploy Function
-
-- Click on `AWS Explorer`
-- Configure AWS connection settings
-  - Talk about profile and default region. TODO: During first run, are these picked up from local machine?
-- Pick the region `us-west-1`
-- Right click on `Lambda`, select `Create new AWS Lambda...`
-  - Show code completion in `Handler:` box
+- Click on Lambda icon next to `public class`, `Create new AWS Lambda...`
+  ![New Function](create-function.png)
   - Change memory to 1088
-  - CLick on `Create`
+  - Configure AWS connection settings, if need to
+  - Pick the region `us-west-1`
+- `Create Function`
+- Wait for the event log on bottom right corner
+  ![Event Log](event-log.png)

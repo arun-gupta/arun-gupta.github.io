@@ -100,7 +100,8 @@ This uses AWS SDK.
 
 This uses CloudFormation.
 
-- In `Project Explorer`, open `template.yaml`. This is SAM template.
+- In `Project Explorer`, open `template.yaml`. This is SAM template. Explain `Function` and `Events`.
+- Talk about how `Table` can be added. What else?
 - Right click, select on `Deploy Serverless Application`
   ![Deploy Serverless App](deploy-serverless-app.png)
 - Give a name, specify the bucket

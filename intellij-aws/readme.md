@@ -41,9 +41,8 @@ SAM CLI, version 0.12.0
 
 ## Create New Application
 
-- `Create New Project`
-- `AWS`, `AWS Serverless Application`, `Next`
-- Specify the value as shown:
+- `Create New Project`, `AWS`, `AWS Serverless Application`, `Next`
+- Specify the values as shown:
   ![New Project](new-project.png)
 - Click on `Maven` on top-right, add on `+`, select `pom.xml`
 

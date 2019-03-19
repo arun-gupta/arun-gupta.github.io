@@ -58,3 +58,20 @@ SAM CLI, version 0.12.0
 - `Create Function`
 - Wait for the event log on bottom right corner
   ![Event Log](event-log.png)
+- `AWS Explorer` in bottom left corner, expand `Lambda`, refresh if need to
+  ![AWS Explorer](aws-explorer.png)
+  Show the Lambda function.
+
+## Invoke Lambda Function Locally
+
+- Click on Lambda icon, click on `Run [Local] App`
+  ![Run Local App](run-local-app.png)
+- Change the payload to `{}`
+  ![Run Local Edit Config](run-local-edit-config.png)
+- `Run`
+  ![Run Local Output](run-local-output.png)
+
+## Invoke Lambda Function Remotely
+
+## Invoke Lambda Function Using CloudFormation
+

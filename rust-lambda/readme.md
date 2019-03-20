@@ -6,12 +6,18 @@
 - Install and configure Rust:
 
   ```
-  ssh -i ~/.ssh/arun-us-east1.pem ec2-user@ec2-34-205-177-254.compute-1.amazonaws.com
+  ssh -i ~/.ssh/arun-us-east1.pem ec2-user@ec2-3-80-206-137.compute-1.amazonaws.com
   sudo yum -y update
   curl https://sh.rustup.rs -sSf | sh
   ```
 
-  Press ENTER
+  Press ENTER to begin Rust installation. The output shows:
+
+  ```
+  stable installed - rustc 1.33.0 (2aa4c46cf 2019-02-28)
+  ```
+
+  Configure tools:
 
   ```
   source $HOME/.cargo/env
@@ -118,7 +124,7 @@
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
   ```
 
-  Press ENTER to continue
+  Press RETURN to continue
 
   ```
   export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
@@ -169,6 +175,15 @@
 
   ```
   aws lambda invoke --function-name HelloRust --payload '{"firstName" : "Rustacean"}' output.json
+  ```
+
+  It shows the output:
+
+  ```
+  {
+    "ExecutedVersion": "$LATEST", 
+    "StatusCode": 200
+  }
   ```
 
 - View the output:

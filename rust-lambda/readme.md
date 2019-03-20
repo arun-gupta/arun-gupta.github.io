@@ -152,7 +152,7 @@
   ```
   mkdir ~/.aws
   vi ~/.aws/credentials # stick your credentials in this file
-  aws configure
+  aws configure # specify the region, us-east-1 for example
   ```
   
 - Create a new or reuse an existing S3 bucket

@@ -153,6 +153,8 @@
         CodeUri: rust.zip
   ```
 
+  Make sure the indentation is correct.
+
 - Configure AWS credentials
 
   ```

@@ -28,15 +28,15 @@ Check the version:
 
 ```
 sam --version
-SAM CLI, version 0.12.0
+SAM CLI, version 0.14.1
 ```
 
 ## Setup Plugin
 
 - IntelliJ IDEA, `Preferences`
-- Subscribe to EAP builds as explained at https://github.com/aws/aws-toolkit-jetbrains#eap-builds
+- For the latest (in development) build, subscribe to EAP builds as explained at https://github.com/aws/aws-toolkit-jetbrains#eap-builds
 - Search for `plugins`
-- Search for `aws tooklkit`, select. Verify the version number is `v1.2-EAP.2019.03.14` at least and click on `Install`.
+- Search for `aws tooklkit`, select. Verify the version number is `v1.2` at least and click on `Install`.
 - Click on `Restart IDE` to restart the IDE
 
 ## Create New Application

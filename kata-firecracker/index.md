@@ -55,12 +55,16 @@ Detailed instructions for the Kata part are at https://github.com/kata-container
 	[✔]  EKS cluster "kata-eks" in "us-west-2" region is ready
 	```
 
+## Install Kata on EKS
+
 - Install Kata on EKS cluster:
 
   ```
   kubectl apply -f https://raw.githubusercontent.com/kata-containers/packaging/master/kata-deploy/kata-rbac.yaml
   kubectl apply -f https://raw.githubusercontent.com/kata-containers/packaging/master/kata-deploy/kata-deploy.yaml
   ```
+
+## Deploy a pod to use Kata+Firecracker runtime
 
 - Deploy a pod to use `kata-fc` runtime:
 

@@ -3,7 +3,13 @@
 - Install/upgrade Helm
 
   ```
-  brew install kubernetes-helm` or `brew upgrade kubernetes-helm
+  brew install kubernetes-helm
+  ```
+
+  OR
+
+  ```
+  brew upgrade kubernetes-helm
   ```
 
 - Install Tiller:

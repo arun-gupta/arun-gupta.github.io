@@ -12,8 +12,8 @@ This document explains how to create an Amazon EKS cluster with two node groups.
   brew tap weaveworks/tap
   brew install weaveworks/tap/eksctl
   ```
-  
-  OR
+
+   OR
 
   ```
   brew upgrade eksctl
@@ -94,6 +94,8 @@ This document explains how to create an Amazon EKS cluster with two node groups.
 	```
 	kubectl apply -l role=gpu -f https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/v1.11/nvidia-device-plugin.yml
 	```
+
+   Daemeonset would start pods on all the nodes
 
 1. Get CPU and GPU for each node in the cluster:
 

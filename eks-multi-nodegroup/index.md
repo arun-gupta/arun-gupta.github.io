@@ -4,7 +4,7 @@ This document explains how to create an Amazon EKS cluster with two node groups.
 
 1. Subscribe to the GPU supported AMI:
 
-		https://aws.amazon.com/marketplace/pp/B07GRHFXGM
+	https://aws.amazon.com/marketplace/pp/B07GRHFXGM
 
 1. Install eksctl:
 
@@ -12,7 +12,7 @@ This document explains how to create an Amazon EKS cluster with two node groups.
   brew tap weaveworks/tap
   brew install weaveworks/tap/eksctl
   ```
-
+  
   OR
 
   ```

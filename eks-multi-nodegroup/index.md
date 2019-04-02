@@ -90,3 +90,27 @@ This document explains how to create an Amazon EKS cluster with two node groups.
 	ip-192-168-59-95.us-west-2.compute.internal    Ready    <none>   5m    v1.11.9
 	ip-192-168-84-10.us-west-2.compute.internal    Ready    <none>   5m    v1.11.9
 	```
+
+- Apply NVIDIA driver to worker nodes:
+
+	```
+	kubectl apply -l role=gpu -f https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/v1.11/nvidia-device-plugin.yml
+	```
+
+- Get CPU and GPU for each node in the cluster:
+
+	```
+	kubectl get nodes "-o=custom-columns=NAME:.metadata.name,MEMORY:.status.allocatable.memory,CPU:.status.allocatable.cpu,GPU:.status.allocatable.nvidia\.com/gpu"
+	```
+
+	This will show the output:
+
+	```
+	NAME                                           MEMORY        CPU   GPU
+	ip-192-168-11-163.us-west-2.compute.internal   251641556Ki   32    4
+	ip-192-168-15-38.us-west-2.compute.internal    32018380Ki    8     <none>
+	ip-192-168-16-204.us-west-2.compute.internal   32018380Ki    8     <none>
+	ip-192-168-59-95.us-west-2.compute.internal    32018372Ki    8     <none>
+	ip-192-168-81-153.us-west-2.compute.internal   251641556Ki   32    4
+	ip-192-168-84-10.us-west-2.compute.internal    32018380Ki    8     <none>
+	```

@@ -71,22 +71,22 @@ This document explains how to create an Amazon EKS cluster with two node groups.
 	[✔]  EKS cluster "gpu-cpu-cluster" in "us-west-2" region is ready
 	```
 
-- Get the nodes with the label `role=cpu`:
+- Get nodes with the label `role=gpu`:
 
 	```
-	$ kubectl get nodes -l role=cpu
+	kubectl get nodes -l role=gpu
+	NAME                                           STATUS   ROLES    AGE   VERSION
+	ip-192-168-11-163.us-west-2.compute.internal   Ready    <none>   5m    v1.11.9
+	ip-192-168-81-153.us-west-2.compute.internal   Ready    <none>   5m    v1.11.9
+	```
+
+	Now, get nodes with the label `role=cpu`:
+
+	```
+	kubectl get nodes -l role=cpu
 	NAME                                           STATUS   ROLES    AGE   VERSION
 	ip-192-168-15-38.us-west-2.compute.internal    Ready    <none>   5m    v1.11.9
 	ip-192-168-16-204.us-west-2.compute.internal   Ready    <none>   5m    v1.11.9
 	ip-192-168-59-95.us-west-2.compute.internal    Ready    <none>   5m    v1.11.9
 	ip-192-168-84-10.us-west-2.compute.internal    Ready    <none>   5m    v1.11.9
-	```
-
-	Now, get nodes with the label `role=gpu`:
-
-	```
-	$ kubectl get nodes -l role=gpu
-	NAME                                           STATUS   ROLES    AGE   VERSION
-	ip-192-168-11-163.us-west-2.compute.internal   Ready    <none>   5m    v1.11.9
-	ip-192-168-81-153.us-west-2.compute.internal   Ready    <none>   5m    v1.11.9
 	```

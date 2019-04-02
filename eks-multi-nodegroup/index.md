@@ -2,13 +2,11 @@
 
 This document explains how to create an Amazon EKS cluster with two node groups. The first node group has up to 2 GPUs and the second node group has up to 4 CPUs. This is useful if you want to run ML and non-ML workloads on the same cluster. Nodes are labeled with `role: gpu` and `role: cpu`.
 
-## Create EKS cluster
+1. Subscribe to the GPU supported AMI:
 
-- Subscribe to the GPU supported AMI:
+		https://aws.amazon.com/marketplace/pp/B07GRHFXGM
 
-	https://aws.amazon.com/marketplace/pp/B07GRHFXGM
-
-- Install eksctl:
+1. Install eksctl:
 
   ```
   brew tap weaveworks/tap
@@ -21,14 +19,14 @@ This document explains how to create an Amazon EKS cluster with two node groups.
   brew upgrade eksctl
   ```
 
-- Verify eksctl version:
+1. Verify eksctl version:
 
   ```
   eksctl version
   [ℹ]  version.Info{BuiltAt:"", GitCommit:"", GitTag:"0.1.26"}
   ```
 
-- Create a EKS cluster with two node groups:
+1. Create a EKS cluster with two node groups:
 
 	```
 	eksctl create cluster -f eksctl-config.yaml
@@ -71,7 +69,7 @@ This document explains how to create an Amazon EKS cluster with two node groups.
 	[✔]  EKS cluster "gpu-cpu-cluster" in "us-west-2" region is ready
 	```
 
-- Get nodes with the label `role=gpu`:
+1. Get nodes with the label `role=gpu`:
 
 	```
 	kubectl get nodes -l role=gpu
@@ -91,13 +89,13 @@ This document explains how to create an Amazon EKS cluster with two node groups.
 	ip-192-168-84-10.us-west-2.compute.internal    Ready    <none>   5m    v1.11.9
 	```
 
-- Apply NVIDIA driver to worker nodes:
+1. Apply NVIDIA driver to worker nodes:
 
 	```
 	kubectl apply -l role=gpu -f https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/v1.11/nvidia-device-plugin.yml
 	```
 
-- Get CPU and GPU for each node in the cluster:
+1. Get CPU and GPU for each node in the cluster:
 
 	```
 	kubectl get nodes "-o=custom-columns=NAME:.metadata.name,MEMORY:.status.allocatable.memory,CPU:.status.allocatable.cpu,GPU:.status.allocatable.nvidia\.com/gpu"
@@ -114,3 +112,4 @@ This document explains how to create an Amazon EKS cluster with two node groups.
 	ip-192-168-81-153.us-west-2.compute.internal   251641556Ki   32    4
 	ip-192-168-84-10.us-west-2.compute.internal    32018380Ki    8     <none>
 	```
+

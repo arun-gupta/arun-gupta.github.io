@@ -1,6 +1,6 @@
 # Amazon EKS Cluster with Multiple Node Groups
 
-This document explains how to create an Amazon EKS cluster with two node groups. The first node group has upto 2 GPUs and the second node group has up to 4 CPUs. This is useful if you want to run ML and non-ML workloads on the same cluster. Nodes are labeled with `role: gpu` and `role: cpu`.
+This document explains how to create an Amazon EKS cluster with two node groups. The first node group has up to 2 GPUs and the second node group has up to 4 CPUs. This is useful if you want to run ML and non-ML workloads on the same cluster. Nodes are labeled with `role: gpu` and `role: cpu`.
 
 ## Create EKS cluster
 
@@ -83,7 +83,7 @@ This document explains how to create an Amazon EKS cluster with two node groups.
 	```
 
 	Now, get nodes with the label `role=gpu`:
-	
+
 	```
 	$ kubectl get nodes -l role=gpu
 	NAME                                           STATUS   ROLES    AGE   VERSION

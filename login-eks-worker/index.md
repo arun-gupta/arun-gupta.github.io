@@ -13,7 +13,7 @@
 
    ```
    aws ec2 describe-instances \
-   --filters Name=private-dns-name,Values=ip-192-168-40-127.us-west-2.compute.internal \
+   --filters Name=private-dns-name,Values=$(kubectl get nodes -o jsonpath='{.items[0].metadata.name}') \
    --query "Reservations[0].Instances[0].PublicDnsName" \
    --output text
    ```

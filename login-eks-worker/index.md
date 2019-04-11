@@ -18,6 +18,8 @@
    --output text
    ```
 
+   Change the index in `items[0]` to log in to a different worker.
+
 1. Login to worker nodes:
 
    ```

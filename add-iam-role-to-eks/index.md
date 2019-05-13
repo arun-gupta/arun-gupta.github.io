@@ -2,8 +2,9 @@
 
 This script shows how to attach an IAM role from a _destination_ AWS user to access EKS cluster created by a _source_ AWS user.
 
-## Destination User
+## Create IAM Role for Destination User
 
+- Install [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html) and [configure](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html). For convenience, `aws configure` will configure the CLI. Make sure to choose the same region in which the EKS cluster is created, for example `us-west-2`.
 - Create an IAM role using [trust-policy.json](trust-policy.json):
 
 	```
@@ -45,7 +46,7 @@ This script shows how to attach an IAM role from a _destination_ AWS user to acc
 	brew install aws-iam-authenticator
 	```
 
-## Source User
+## Create Kubernetes Configuration for Source User
 
 - Replace `$Arn` from the destination user in the script below. Add IAM role to `aws-auth` ConfigMap for the EKS cluster:
 
@@ -63,7 +64,7 @@ This script shows how to attach an IAM role from a _destination_ AWS user to acc
 
 - Copy `kubeconfig` where destination user can access it.
 
-## Destination User
+## Access EKS Cluster by Destination User
 
 - Use the `kubeconfig` to access the cluster:
 

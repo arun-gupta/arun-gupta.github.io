@@ -47,7 +47,7 @@ This script shows how to attach an IAM role from a destination machine to access
 
 ## Master Machine
 
-- Replace `$Arn` from the destination machine in the script below. Add the IAM role to `aws-auth` ConfigMap for the EKS cluster:
+- Replace `$Arn` from the destination machine in the script below. Add IAM role to `aws-auth` ConfigMap for the EKS cluster:
 
 	```
 	ROLE="    - rolearn: $Arn\n      username: eks\n      groups:\n        - system:masters"
@@ -55,7 +55,7 @@ This script shows how to attach an IAM role from a destination machine to access
 	kubectl patch configmap/aws-auth -n kube-system --patch "$(cat /tmp/aws-auth-patch.yml)"
 	```
 
-- Write kube config:
+- Generate configuration file to access the EKS Cluster:
 
 	```
 	eksctl utils write-kubeconfig --name myeks --kubeconfig ./kubeconfig

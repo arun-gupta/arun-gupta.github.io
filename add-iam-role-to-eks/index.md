@@ -1,6 +1,6 @@
-# Add IAM users to Amazon EKS Cluster
+# Add IAM role to Amazon EKS Cluster
 
-This script shows how to attach an IAM role from a destination machine to access EKS cluster.
+This script shows how to attach an IAM role from a _destination_ machine to access EKS cluster created on a _master_ machine.
 
 ## Destination Machine
 
@@ -38,7 +38,7 @@ This script shows how to attach an IAM role from a destination machine to access
 	}
 	```
 
-  Note `Arn` of the role.
+  Note value of `Role.Arn` property.
 - Install aws-iam-authenticator:
 
 	```
@@ -76,3 +76,10 @@ This script shows how to attach an IAM role from a destination machine to access
 	```
 	export KUBECONFIG=`pwd`/kubeconfig
 	```
+
+	And then get nodes as:
+
+	```
+	kubectl get nodes
+	```
+

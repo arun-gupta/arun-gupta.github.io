@@ -1,8 +1,8 @@
 # Add IAM role to Amazon EKS Cluster
 
-This script shows how to attach an IAM role from a _destination_ machine to access EKS cluster created on a _master_ machine.
+This script shows how to attach an IAM role from a _destination_ AWS user to access EKS cluster created by a _source_ AWS user. The 
 
-## Destination Machine
+## Destination User
 
 - Create an IAM role using [trust-policy.json](trust-policy.json):
 
@@ -45,9 +45,9 @@ This script shows how to attach an IAM role from a _destination_ machine to acce
 	brew install aws-iam-authenticator
 	```
 
-## Master Machine
+## Source User
 
-- Replace `$Arn` from the destination machine in the script below. Add IAM role to `aws-auth` ConfigMap for the EKS cluster:
+- Replace `$Arn` from the destination user in the script below. Add IAM role to `aws-auth` ConfigMap for the EKS cluster:
 
 	```
 	ROLE="    - rolearn: $Arn\n      username: eks\n      groups:\n        - system:masters"
@@ -61,9 +61,9 @@ This script shows how to attach an IAM role from a _destination_ machine to acce
 	eksctl utils write-kubeconfig --name myeks --kubeconfig ./kubeconfig
 	```
 
-- Copy `kubeconfig` to the destination machine
+- Copy `kubeconfig` where destination user can access it.
 
-## Destination Machine
+## Destination User
 
 - Use the `kubeconfig` to access the cluster:
 

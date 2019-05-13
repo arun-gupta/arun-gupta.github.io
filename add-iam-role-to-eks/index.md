@@ -4,7 +4,7 @@ This script shows how to attach an IAM role from a _destination_ machine to acce
 
 ## Destination Machine
 
-- Create an IAM role:
+- Create an IAM role using [trust-policy.json](trust-policy.json):
 
 	```
 	aws iam create-role \

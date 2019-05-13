@@ -1,6 +1,6 @@
 # Add IAM role to Amazon EKS Cluster
 
-This script shows how to attach an IAM role from a _destination_ AWS user to access EKS cluster created by a _source_ AWS user. The 
+This script shows how to attach an IAM role from a _destination_ AWS user to access EKS cluster created by a _source_ AWS user.
 
 ## Destination User
 

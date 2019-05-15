@@ -60,7 +60,7 @@ These instructions explain how to access Amazon EKS cluster from a _destination_
 	}
 	```
 
-. Set `ROLE_ARN` environment variable:
+- Set `ROLE_ARN` environment variable:
 
   ```
   ROLE_ARN=$(aws iam get-role --role-name myeksrole --query Role.Arn --output text)

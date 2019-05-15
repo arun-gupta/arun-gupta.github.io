@@ -60,7 +60,7 @@ These instructions explain how to access Amazon EKS cluster from a _destination_
 	}
 	```
 
-  Set `ROLE_ARN`:
+. Set `ROLE_ARN` environment variable:
 
   ```
   ROLE_ARN=$(aws iam get-role --role-name myeksrole --query Role.Arn --output text)
@@ -92,7 +92,7 @@ These instructions explain how to access Amazon EKS cluster from a _destination_
 ## Configure AWS CLI (using _destination_ credentials)
 
 - Install [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
-- [Configure](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html). For convenience, `aws configure` command will configure the CLI using the given credentials. Make sure to choose the same region in which the EKS cluster is created, for example `us-west-2`.
+- [Configure](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) AWS CLI. For convenience, `aws configure` command will configure the CLI using the given credentials. Make sure to choose the same region in which the EKS cluster is created, for example `us-west-2`.
 - Install aws-iam-authenticator (is it still needed?):
 
 	```

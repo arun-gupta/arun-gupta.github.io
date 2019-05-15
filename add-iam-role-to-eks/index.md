@@ -60,24 +60,18 @@ These instructions explain how to access Amazon EKS cluster from a _destination_
 	}
 	```
 
-  Note the value of `Role.Arn` property.
+  Set `ROLE_ARN`:
 
-## Configure AWS CLI (using _destination_ credentials)
-
-- Install [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
-- [Configure](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html). For convenience, `aws configure` command will configure the CLI using the given credentials. Make sure to choose the same region in which the EKS cluster is created, for example `us-west-2`.
-- Install aws-iam-authenticator:
-
-	```
-	brew install aws-iam-authenticator
-	```
+  ```
+  ROLE_ARN=$(aws iam get-role --role-name myeksrole --query Role.Arn --output text)
+  ```
 
 ## Add Destination IAM role to EKS Cluster
 
-- Replace `$Arn` from the destination user in the script below. Add IAM role to `aws-auth` ConfigMap for the EKS cluster:
+- Add IAM role to `aws-auth` ConfigMap for the EKS cluster:
 
 	```
-	ROLE="    - rolearn: $Arn\n      username: eks\n      groups:\n        - system:masters"
+	ROLE="    - rolearn: $ROLE_ARN\n      username: eks\n      groups:\n        - system:masters"
 	kubectl get -n kube-system configmap/aws-auth -o yaml | awk "/mapRoles: \|/{print;print \"$ROLE\";next}1" > /tmp/aws-auth-patch.yml
 	kubectl patch configmap/aws-auth -n kube-system --patch "$(cat /tmp/aws-auth-patch.yml)"
 	```
@@ -88,16 +82,26 @@ These instructions explain how to access Amazon EKS cluster from a _destination_
 
 	```
 	aws eks update-kubeconfig \
-		--role-arn $Role.Arn \
+		--role-arn $ROLE_ARN \
 		--kubeconfig ./kubeconfig \
-		--name <eks-cluster-name>
+		--name minecraft
 	```
 
 - Copy `kubeconfig` where destination user can access it.
 
+## Configure AWS CLI (using _destination_ credentials)
+
+- Install [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
+- [Configure](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html). For convenience, `aws configure` command will configure the CLI using the given credentials. Make sure to choose the same region in which the EKS cluster is created, for example `us-west-2`.
+- Install aws-iam-authenticator (is it still needed?):
+
+	```
+	brew install aws-iam-authenticator
+	```
+
 ## Access EKS Cluster by Destination User
 
-- Use the `kubeconfig` to access the cluster:
+- Use `kubeconfig` to access the cluster:
 
 	```
 	kubectl --kubeconfig ./kubeconfig get nodes

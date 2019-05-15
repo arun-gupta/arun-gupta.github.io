@@ -4,7 +4,7 @@ These instructions explain how to access Amazon EKS cluster from a _destination_
 
 ## Create AWS Destination User (using _source_ credentials)
 
-- Create a new policy at https://console.aws.amazon.com/iam/home?region=us-west-2#/policies. Call it `AmazonEKSAdminPolicy` and use the following JSON fragment:
+- Create a [new policy](https://console.aws.amazon.com/iam/home?region=us-west-2#/policies). Call it `AmazonEKSAdminPolicy` and use the following JSON fragment:
 
 	```
 	{
@@ -20,7 +20,7 @@ These instructions explain how to access Amazon EKS cluster from a _destination_
     ]
 	}
 	```
-- Create a new group at https://console.aws.amazon.com/iam/home?region=us-west-2#/groups, call it `myeks`. Assign previously created policy to the group.
+- Create a [new group](https://console.aws.amazon.com/iam/home?region=us-west-2#/groups), call it `myeks`. Assign the previously created policy to the group.
 - Create a [new AWS user](https://console.aws.amazon.com/iam/home?region=us-west-2#/users), enable programmatic access, add user to the `myeks` group
 - Download `.csv` file and share the credentials out of band
 

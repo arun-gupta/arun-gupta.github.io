@@ -2,7 +2,9 @@
 
 These instructions explain how to access Amazon EKS cluster from a _destination_ machine by somebody who does not have an AWS account. The cluster is created on a _source_ machine.
 
-## Create AWS Destination User (using _source_ credentials)
+## On the _source_ machine
+
+### Create AWS Destination User
 
 - Create a [new policy](https://console.aws.amazon.com/iam/home?region=us-west-2#/policies). Call it `AmazonEKSAdminPolicy` and use the following JSON fragment:
 
@@ -24,7 +26,7 @@ These instructions explain how to access Amazon EKS cluster from a _destination_
 - Create a [new AWS user](https://console.aws.amazon.com/iam/home?region=us-west-2#/users), enable programmatic access, add user to the `myeks` group
 - Download `.csv` file and share the credentials out of band
 
-## Create IAM role (using _source_ credentials)
+### Create IAM role
 
 - Create an IAM role using [trust-policy.json](trust-policy.json):
 
@@ -66,7 +68,7 @@ These instructions explain how to access Amazon EKS cluster from a _destination_
   ROLE_ARN=$(aws iam get-role --role-name myeksrole --query Role.Arn --output text)
   ```
 
-## Add Destination IAM role to EKS Cluster
+### Add Destination IAM role to EKS Cluster
 
 - Add IAM role to `aws-auth` ConfigMap for the EKS cluster:
 
@@ -76,7 +78,7 @@ These instructions explain how to access Amazon EKS cluster from a _destination_
 	kubectl patch configmap/aws-auth -n kube-system --patch "$(cat /tmp/aws-auth-patch.yml)"
 	```
 
-## Generate Kubernetes Configuration for Destination User
+### Generate Kubernetes Configuration for Destination User
 
 - Generate configuration file to access the EKS Cluster:
 
@@ -89,7 +91,9 @@ These instructions explain how to access Amazon EKS cluster from a _destination_
 
 - Copy `kubeconfig` where destination user can access it.
 
-## Configure AWS CLI (using _destination_ credentials)
+## On the _destination_ machine
+
+## Configure AWS CLI
 
 - Install [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
 - [Configure](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) AWS CLI. For convenience, `aws configure` command will configure the CLI using the given credentials. Make sure to choose the same region in which the EKS cluster is created, for example `us-west-2`.

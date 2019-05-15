@@ -93,7 +93,7 @@ These instructions explain how to access Amazon EKS cluster from a _destination_
 
 ## On the _destination_ machine
 
-## Configure AWS CLI
+### Configure AWS CLI
 
 - Install [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
 - [Configure](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) AWS CLI. For convenience, `aws configure` command will configure the CLI using the given credentials. Make sure to choose the same region in which the EKS cluster is created, for example `us-west-2`.
@@ -103,7 +103,7 @@ These instructions explain how to access Amazon EKS cluster from a _destination_
 	brew install aws-iam-authenticator
 	```
 
-## Access EKS Cluster by Destination User
+### Access EKS Cluster by Destination User
 
 - Use `kubeconfig` to access the cluster:
 

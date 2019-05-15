@@ -1,6 +1,6 @@
 # Add IAM role to Amazon EKS Cluster
 
-These instructions explain how to access Amazon EKS cluster from a _destination_ machine for somebody who does not have AWS account. The cluster is created on a _source_ machine.
+These instructions explain how to access Amazon EKS cluster from a _destination_ machine by somebody who does not have an AWS account. The cluster is created on a _source_ machine.
 
 ## Create AWS Destination User (using _source_ credentials)
 
@@ -60,7 +60,7 @@ These instructions explain how to access Amazon EKS cluster from a _destination_
 	}
 	```
 
-  Note value of `Role.Arn` property.
+  Note the value of `Role.Arn` property.
 
 ## Configure AWS CLI (using _destination_ credentials)
 

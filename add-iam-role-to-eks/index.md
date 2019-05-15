@@ -1,10 +1,31 @@
 # Add IAM role to Amazon EKS Cluster
 
-This script shows how to attach an IAM role from a _destination_ AWS user to access EKS cluster created by a _source_ AWS user.
+These instructions explain how to access Amazon EKS cluster from a _destination_ machine for somebody who does not have AWS account. The cluster is created on a _source_ machine.
 
-## Create IAM Role for Destination User
+## Create AWS Destination User (using _source_ credentials)
 
-- Install [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html) and [configure](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html). For convenience, `aws configure` will configure the CLI. Make sure to choose the same region in which the EKS cluster is created, for example `us-west-2`.
+- Create a new policy at https://console.aws.amazon.com/iam/home?region=us-west-2#/policies. Call it `AmazonEKSAdminPolicy` and use the following JSON fragment:
+
+	```
+	{
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "eks:*"
+        ],
+        "Resource": "*"
+      }
+    ]
+	}
+	```
+- Create a new group at https://console.aws.amazon.com/iam/home?region=us-west-2#/groups, call it `myeks`. Assign previously created policy to the group.
+- Create a [new AWS user](https://console.aws.amazon.com/iam/home?region=us-west-2#/users), enable programmatic access, add user to the `myeks` group
+- Download `.csv` file and share the credentials out of band
+
+## Create IAM role (using _source_ credentials)
+
 - Create an IAM role using [trust-policy.json](trust-policy.json):
 
 	```
@@ -40,13 +61,18 @@ This script shows how to attach an IAM role from a _destination_ AWS user to acc
 	```
 
   Note value of `Role.Arn` property.
+
+## Configure AWS CLI (using _destination_ credentials)
+
+- Install [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
+- [Configure](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html). For convenience, `aws configure` command will configure the CLI using the given credentials. Make sure to choose the same region in which the EKS cluster is created, for example `us-west-2`.
 - Install aws-iam-authenticator:
 
 	```
 	brew install aws-iam-authenticator
 	```
 
-## Create Kubernetes Configuration for Source User
+## Add Destination IAM role to EKS Cluster
 
 - Replace `$Arn` from the destination user in the script below. Add IAM role to `aws-auth` ConfigMap for the EKS cluster:
 
@@ -56,10 +82,15 @@ This script shows how to attach an IAM role from a _destination_ AWS user to acc
 	kubectl patch configmap/aws-auth -n kube-system --patch "$(cat /tmp/aws-auth-patch.yml)"
 	```
 
+## Generate Kubernetes Configuration for Destination User
+
 - Generate configuration file to access the EKS Cluster:
 
 	```
-	eksctl utils write-kubeconfig --name myeks --kubeconfig ./kubeconfig
+	aws eks update-kubeconfig \
+		--role-arn $Role.Arn \
+		--kubeconfig ./kubeconfig \
+		--name <eks-cluster-name>
 	```
 
 - Copy `kubeconfig` where destination user can access it.

@@ -22,12 +22,12 @@ These instructions explain how to access Amazon EKS cluster from a _destination_
 	```
 
 - Create a [new group](https://console.aws.amazon.com/iam/home?region=us-west-2#/groups), call it `myeks`. Assign the previously created policy to this group.
-- Create a [new AWS user](https://console.aws.amazon.com/iam/home?region=us-west-2#/users), enable programmatic access, add user to the `myeks` group
+- Create a [new AWS user](https://console.aws.amazon.com/iam/home?region=us-west-2#/users) `myuser`, enable programmatic access, add user to the `myeks` group
 - Download `.csv` file and share the credentials out of band
 - Grab the user ARN:
 
 	```
-	USER_ARN=$(aws iam get-user --user-name myeks --query User.Arn --output text)
+	USER_ARN=$(aws iam get-user --user-name myuser --query User.Arn --output text)
 	```
 
 ### Add Destination IAM user to EKS Cluster
@@ -35,17 +35,20 @@ These instructions explain how to access Amazon EKS cluster from a _destination_
 - Add IAM user to `aws-auth` ConfigMap for the EKS cluster:
 
 	```
-	USER="  mapUsers: |\n    - userarn: $USER_ARN\n      username: myeks\n      groups:\n        - system:masters"
+	USER="  mapUsers: |\n    - userarn: $USER_ARN\n      username: myuser\n      groups:\n        - system:masters"
 	kubectl get -n kube-system configmap/aws-auth -o yaml | awk "/data:/{print;print \"$USER\";next}1" > /tmp/aws-auth-patch.yml
 	kubectl patch configmap/aws-auth -n kube-system --patch "$(cat /tmp/aws-auth-patch.yml)"
 	```
 
 ## On the _destination_ machine
 
-### Configure AWS CLI for Destination User
+### Configure AWS CLI
 
 - Install [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
 - [Configure](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) AWS CLI. For convenience, `aws configure` command will configure the CLI using the given credentials. Make sure to choose the same region in which the EKS cluster is created, for example `us-west-2`. Choose `json` as the output format.
+
+### Setup Kubernetes
+
 - Install `aws-iam-authenticator` as explained at https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html and include in `PATH`
 - Install `kubectl` as explained at https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html
 - Install `eksctl` as explained at https://eksctl.io

@@ -52,9 +52,6 @@ These instructions explain how to access Amazon EKS cluster from a _destination_
 - Install `aws-iam-authenticator` as explained at https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html and include in `PATH`
 - Install `kubectl` as explained at https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html
 - Install `eksctl` as explained at https://eksctl.io
-
-### Generate Kubernetes Configuration
-
 - Generate configuration file to access the EKS Cluster:
 
 	```

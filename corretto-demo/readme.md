@@ -14,7 +14,7 @@ java -version
 ## Corretto on Ubuntu 18.04
 
 ```
-ssh -i ~/.ssh/arun-us-east1.pem ubuntu@ec2-3-80-95-35.compute-1.amazonaws.com
+ssh -i ~/.ssh/arun-us-east1.pem ubuntu@ec2-54-159-148-109.compute-1.amazonaws.com
 java -version
 sudo apt-get update && sudo apt-get install java-common
 curl -O https://d3pxv6yz143wms.cloudfront.net/11.0.3.7.1/java-11-amazon-corretto-jdk_11.0.3.7-1_amd64.deb

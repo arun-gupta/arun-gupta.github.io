@@ -1,5 +1,7 @@
 # Create Firecracker microVM using firectl
 
+[Firectl](https://github.com/firecracker-microvm/firectl) is a basic CLI tool that lets you run arbitrary Firecracker MicroVMs via the command line.
+
 - Create a `m5d.metal` Ubuntu instance
 - Login to the instance:
 

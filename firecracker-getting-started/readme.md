@@ -10,7 +10,7 @@
 - Get firectl binary:
 
 	```
-	curl -o firectl https://firectl-release.s3.amazonaws.com/firectl-v0.1.0
+	curl -oL firectl https://firectl-release.s3.amazonaws.com/firectl-v0.1.0
 	chmod +x firectl
 	```
 
@@ -39,8 +39,8 @@
 
 	```
 	./firectl \
-  	--kernel=hello-vmlinux.bin \
-	  --root-drive=hello-rootfs.ext4
+    --kernel=hello-vmlinux.bin \
+    --root-drive=hello-rootfs.ext4
 	```
 
 	This boots the kernel using the filesytem:
@@ -302,4 +302,4 @@
 	```
 
 	Use `root` as login and password.
-	
+

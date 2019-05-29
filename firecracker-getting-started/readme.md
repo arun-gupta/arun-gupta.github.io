@@ -306,7 +306,7 @@
 	Use `root` as login and password.
 
 
-- Terminate the microVM:
+- Terminate the microVM synchronously:
 
 	```
 	localhost:~# reboot
@@ -323,3 +323,26 @@
 	INFO[0903] firecracker exited: status=0                 
 	INFO[0903] Start machine was happy
 	```
+
+	Alternatively, the microVM can be terminated using SIGTERM. Get the process id from another terminal:
+
+	```
+	ubuntu@ip-172-31-16-227:~$ pgrep -l firectl
+	5120 firectl
+	```
+
+	Terminate the VM as:
+
+	```
+	kill -TERM 5120
+	```
+
+	MicroVM terminal shows the following output:
+
+	```
+	localhost:~# INFO[0023] Caught SIGINT, requesting clean shutdown     
+	2019-05-29T20:47:28.656242269 [anonymous-instance:WARN:devices/src/legacy/i8042.rs:146] Failed to trigger i8042 kbd interrupt (disabled by guest OS)
+	2019-05-29T20:47:28.656346852 [anonymous-instance:WARN:devices/src/legacy/i8042.rs:146] Failed to trigger i8042 kbd interrupt (disabled by guest OS)
+	2019-05-29T20:47:28.656394186 [anonymous-instance:WARN:devices/src/legacy/i8042.rs:146] Failed to trigger i8042 kbd interrupt (disabled by guest OS)
+	INFO[0023] Sent instance shutdown request: [PUT /actions][204] createSyncActionNoContent 
+	``` 

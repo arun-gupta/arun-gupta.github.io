@@ -305,6 +305,12 @@
 
 	Use `root` as login and password.
 
+- Get details about the machine from another terminal:
+
+	```
+	ubuntu@ip-172-31-16-227:~$ curl --unix-socket .firecracker* http://localhost/machine-config
+	{ "vcpu_count": 1, "mem_size_mib": 512,  "ht_enabled": true,  "cpu_template": "Uninitialized" }
+	```
 
 - Terminate the microVM synchronously:
 

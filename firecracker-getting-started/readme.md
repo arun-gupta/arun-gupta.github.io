@@ -305,3 +305,21 @@
 
 	Use `root` as login and password.
 
+
+- Terminate the microVM:
+
+	```
+	localhost:~# reboot
+	PID1: Received "reboot" from FIFO...
+	localhost:~# Starting reboot runlevel
+	 * Unmounting loop devices
+	 * Unmounting filesystems
+	Sending the final term signal
+	Sending the final kill signal
+	[  902.966848] Unregister pv shared memory for cpu 0
+	[  902.968359] reboot: Restarting system
+	[  902.969422] reboot: machine restart
+	2019-05-29T20:40:09.430397970 [anonymous-instance:ERROR:vmm/src/lib.rs:1373] Failed to log metrics while stopping: Logger was not initialized.
+	INFO[0903] firecracker exited: status=0                 
+	INFO[0903] Start machine was happy
+	```

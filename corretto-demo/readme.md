@@ -2,6 +2,8 @@
 
 ## Amazon Linux 2
 
+### Corretto 8
+
 ```
 ssh -i ~/.ssh/arun-us-east1.pem ec2-user@ec2-3-81-129-201.compute-1.amazonaws.com
 sudo yum update -y
@@ -11,7 +13,21 @@ sudo yum install java-1.8.0-amazon-corretto-devel -y
 java -version
 ```
 
+### Corretto 11
+
+```
+sudo yum update -y
+sudo yum list available | grep corretto
+sudo yum install java-11-amazon-corretto.x86_64
+java -version
+openjdk version "11.0.2" 2019-01-15 LTS
+OpenJDK Runtime Environment Corretto-11.0.2.9.3 (build 11.0.2+9-LTS)
+OpenJDK 64-Bit Server VM Corretto-11.0.2.9.3 (build 11.0.2+9-LTS, mixed mode)
+```
+
 ## Corretto on Ubuntu 18.04
+
+### Corretto 8
 
 ```
 ssh -i ~/.ssh/arun-us-east1.pem ubuntu@ec2-54-159-148-109.compute-1.amazonaws.com

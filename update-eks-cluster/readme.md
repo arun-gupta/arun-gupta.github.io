@@ -1,8 +1,8 @@
 # Update EKS cluster
 
-These instructions explain how to update an EKS cluster created using [eksctl](https://eksctl.io). [Updating an Amazon EKS Cluster Kubernetes Version](https://docs.aws.amazon.com/eks/latest/userguide/update-cluster.html) provide detailed instructions.
+These instructions explain how to update an Amazon EKS cluster created using [eksctl](https://eksctl.io). [Updating an Amazon EKS Cluster Kubernetes Version](https://docs.aws.amazon.com/eks/latest/userguide/update-cluster.html) provide detailed instructions.
 
-Read Kubernetes [version skew policy](https://kubernetes.io/docs/setup/release/version-skew-policy/).
+Read Kubernetes [version skew policy](https://kubernetes.io/docs/setup/release/version-skew-policy/) to learn about how much variance is allowed between control plane and data plane. These instructions will update an EKS 1.11 cluster to 1.12 cluster.
 
 ## Create EKS 1.11 cluster
 
@@ -160,4 +160,20 @@ Server Version: version.Info{Major:"1", Minor:"11+", GitVersion:"v1.11.8-eks-7c3
 	ip-192-168-88-245.us-west-2.compute.internal   Ready,SchedulingDisabled   <none>   5h15m   v1.11.9
 	```
 
-	Takes a few mins for the older nodes to terminate and disappear.
+	Takes a few mins for the older nodes to terminate and disappear:
+
+	```
+	kubectl get nodes
+	NAME                                           STATUS   ROLES    AGE     VERSION
+	ip-192-168-30-170.us-west-2.compute.internal   Ready    <none>   4m35s   v1.12.7
+	ip-192-168-64-15.us-west-2.compute.internal    Ready    <none>   4m40s   v1.12.7
+	```
+
+- Access the application:
+
+	```
+	curl http://$(kubectl get svc/myapp-greeting \
+      -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')/hello
+	```
+
+

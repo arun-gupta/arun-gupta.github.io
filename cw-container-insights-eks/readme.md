@@ -153,3 +153,20 @@
 	curl http://$(kubectl get svc/myapp-greeting \
 		-o jsonpath='{.status.loadBalancer.ingress[0].hostname}')/hello
 	```
+
+## View Container Insights
+
+- Watch Container Insights at https://us-west-2.console.aws.amazon.com/cloudwatch/home?region=us-west-2#cw:dashboard=Container
+
+	Default view:
+
+	![default view](cw-container-insights-cluster-view.png)
+
+	Pick the cluster:
+
+	![pick cluster](cw-container-insights-views.png)
+
+	Pick the view:
+
+	![pick view](cw-container-insights-views.png)
+

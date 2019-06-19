@@ -98,3 +98,34 @@
 	cloudwatch-agent-c2hln   1/1     Running   0          92s
 	```
 
+## Install FluentD
+
+- Create ConfigMap for FluentD:
+
+	```
+	kubectl create configmap cluster-info \
+		--from-literal=cluster.name=myeks-insights \
+		--from-literal=logs.region=us-west-2 -n amazon-cloudwatch
+	configmap/cluster-info created
+	```
+
+- Deploy FluentD DaemonSet:
+
+	```
+	kubectl apply -f https://s3.amazonaws.com/cloudwatch-agent-k8s-yamls/fluentd/fluentd.yml
+	serviceaccount/fluentd created
+	clusterrole.rbac.authorization.k8s.io/fluentd-role created
+	clusterrolebinding.rbac.authorization.k8s.io/fluentd-role-binding created
+	configmap/fluentd-config created
+	daemonset.extensions/fluentd-cloudwatch created
+	```
+
+- Validate:
+
+	```
+	kubectl get pods -l k8s-app=fluentd-cloudwatch -n amazon-cloudwatch 
+	NAME                       READY   STATUS    RESTARTS   AGE
+	fluentd-cloudwatch-98pcr   1/1     Running   0          3m38s
+	fluentd-cloudwatch-rfprv   1/1     Running   0          3m38s
+	
+	```

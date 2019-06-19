@@ -11,7 +11,7 @@
 	[ℹ]  version.Info{BuiltAt:"", GitCommit:"", GitTag:"0.1.36"}
 	```
 
-- Crete an EKS cluster:
+- Crete an EKS cluster. The cluster configuration attaches the necessary policy to the IAM role of worker nodes:
 
 	```
 	eksctl create cluster --config-file cluster.yaml
@@ -45,8 +45,6 @@
 	[ℹ]  kubectl command should work with "/Users/argu/.kube/config", try 'kubectl get nodes'
 	[✔]  EKS cluster "" in "" region is ready
 	```
-
-	The main point in the cluster configuration is to enable IAM 
 
 ## Setup CloudWatch agent to collect metrics
 
@@ -131,4 +129,27 @@
 	fluentd-cloudwatch-rfprv   1/1     Running   0          3m38s
 	```
 
-- 
+## Deploy application
+
+- Install Helm:
+
+	```
+	kubectl -n kube-system create sa tiller
+	kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller
+	helm init --service-account tiller
+	```
+
+- Deploy a Helm chart:
+
+	```
+	git clone https://github.com/aws-samples/kubernetes-for-java-developers
+	cd kubernetes-for-java-developers
+	helm install --name myapp manifests/myapp
+	```
+
+- Verify application:
+
+	```
+	curl http://$(kubectl get svc/myapp-greeting \
+		-o jsonpath='{.status.loadBalancer.ingress[0].hostname}')/hello
+	```

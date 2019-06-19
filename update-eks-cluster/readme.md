@@ -116,4 +116,48 @@ Server Version: version.Info{Major:"1", Minor:"11+", GitVersion:"v1.11.8-eks-7c3
 		--node-ami auto
 	```
 
-- 
+- Get nodes:
+
+	```
+	kubectl get nodes
+	NAME                                           STATUS   ROLES    AGE     VERSION
+	ip-192-168-30-170.us-west-2.compute.internal   Ready    <none>   36s     v1.12.7
+	ip-192-168-62-120.us-west-2.compute.internal   Ready    <none>   5h13m   v1.11.9
+	ip-192-168-64-15.us-west-2.compute.internal    Ready    <none>   41s     v1.12.7
+	ip-192-168-88-245.us-west-2.compute.internal   Ready    <none>   5h13m   v1.11.9
+	```
+
+- Delete old nodegroup:
+
+	```
+	eksctl delete nodegroup --cluster upgrade-test --name ng-5351a550
+	[ℹ]  include rules: ng-5351a550
+	[ℹ]  1 nodegroup (ng-5351a550) was included
+	[ℹ]  will delete 1 nodegroups from auth ConfigMap in cluster "upgrade-test"
+	[ℹ]  removing role "arn:aws:iam::091144949931:role/eksctl-upgrade-test-nodegroup-ng-NodeInstanceRole-Z09UBQA0S9QZ" from auth ConfigMap (username = "system:node:{{EC2PrivateDNSName}}", groups = ["system:bootstrappers" "system:nodes"])
+	[ℹ]  will drain 1 nodegroups in cluster "upgrade-test"
+	[ℹ]  cordon node "ip-192-168-62-120.us-west-2.compute.internal"
+	[ℹ]  cordon node "ip-192-168-88-245.us-west-2.compute.internal"
+	[!]  ignoring DaemonSet-managed Pods: kube-system/aws-node-cl846, kube-system/kube-proxy-x6s95
+	[!]  ignoring DaemonSet-managed Pods: kube-system/aws-node-zgs82, kube-system/kube-proxy-fppld
+	[!]  ignoring DaemonSet-managed Pods: kube-system/aws-node-cl846, kube-system/kube-proxy-x6s95
+	[!]  ignoring DaemonSet-managed Pods: kube-system/aws-node-zgs82, kube-system/kube-proxy-fppld
+	[✔]  drained nodes: [ip-192-168-62-120.us-west-2.compute.internal ip-192-168-88-245.us-west-2.compute.internal]
+	[ℹ]  will delete 1 nodegroups from cluster "upgrade-test"
+	[ℹ]  1 task: { delete nodegroup "ng-5351a550" [async] }
+	[ℹ]  will delete stack "eksctl-upgrade-test-nodegroup-ng-5351a550"
+	[✔]  deleted 1 nodegroups from cluster "upgrade-test"
+	```
+
+- Get nodes:
+
+	```
+	kubectl get nodes
+	NAME                                           STATUS                     ROLES    AGE     VERSION
+	ip-192-168-30-170.us-west-2.compute.internal   Ready                      <none>   2m26s   v1.12.7
+	ip-192-168-62-120.us-west-2.compute.internal   Ready,SchedulingDisabled   <none>   5h15m   v1.11.9
+	ip-192-168-64-15.us-west-2.compute.internal    Ready                      <none>   2m31s   v1.12.7
+	ip-192-168-88-245.us-west-2.compute.internal   Ready,SchedulingDisabled   <none>   5h15m   v1.11.9
+	```
+
+	Takes a few mins for the older nodes to terminate and disappear.

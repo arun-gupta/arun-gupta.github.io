@@ -169,11 +169,12 @@ Server Version: version.Info{Major:"1", Minor:"11+", GitVersion:"v1.11.8-eks-7c3
 	ip-192-168-64-15.us-west-2.compute.internal    Ready    <none>   4m40s   v1.12.7
 	```
 
-- Access the application:
+## Access the application
 
-	```
-	curl http://$(kubectl get svc/myapp-greeting \
-      -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')/hello
-	```
+
+```
+curl http://$(kubectl get svc/myapp-greeting \
+    -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')/hello
+```
 
 

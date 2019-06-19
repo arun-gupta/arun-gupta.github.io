@@ -102,6 +102,8 @@ Read Kubernetes [version skew policy](https://kubernetes.io/docs/setup/release/v
 	Server Version: v1.12.6-eks-d69f1b
 	```
 
+### Update add-ons
+
 - Update kube-proxy:
 
 	```
@@ -275,6 +277,8 @@ curl http://$(kubectl get svc/myapp-greeting \
 	Client Version: v1.14.3
 	Server Version: v1.13.7-eks-c57ff8
 	```
+
+### Update add-ons
 
 - Update kube-proxy:
 

@@ -6,17 +6,42 @@ Read Kubernetes [version skew policy](https://kubernetes.io/docs/setup/release/v
 
 ## Create EKS 1.11 cluster
 
-```
-eksctl create cluster --name upgrade-test --version 1.11
-```
+- Check `eksctl` version:
 
-Check k8s version:
+	```
+	eksctl version
+	[ℹ]  version.Info{BuiltAt:"", GitCommit:"", GitTag:"0.1.36"}
+	```
 
-```
-kubectl version
-Client Version: version.Info{Major:"1", Minor:"14", GitVersion:"v1.14.3", GitCommit:"5e53fd6bc17c0dec8434817e69b04a25d8ae0ff0", GitTreeState:"clean", BuildDate:"2019-06-07T09:57:54Z", GoVersion:"go1.12.5", Compiler:"gc", Platform:"darwin/amd64"}
-Server Version: version.Info{Major:"1", Minor:"11+", GitVersion:"v1.11.8-eks-7c34c0", GitCommit:"7c34c0d2f2d0f11f397d55a46945193a0e22d8f3", GitTreeState:"clean", BuildDate:"2019-03-01T22:49:39Z", GoVersion:"go1.10.8", Compiler:"gc", Platform:"linux/amd64"}
-```
+- Create 1.11 cluster:
+
+	```
+	eksctl create cluster --name upgrade-test --version 1.11
+	```
+
+- Check k8s version:
+
+	```
+	kubectl version
+	Client Version: version.Info{Major:"1", Minor:"14", GitVersion:"v1.14.3", GitCommit:"5e53fd6bc17c0dec8434817e69b04a25d8ae0ff0", GitTreeState:"clean", BuildDate:"2019-06-07T09:57:54Z", GoVersion:"go1.12.5", Compiler:"gc", Platform:"darwin/amd64"}
+	Server Version: version.Info{Major:"1", Minor:"11+", GitVersion:"v1.11.8-eks-7c34c0", GitCommit:"7c34c0d2f2d0f11f397d55a46945193a0e22d8f3", GitTreeState:"clean", BuildDate:"2019-03-01T22:49:39Z", GoVersion:"go1.10.8", Compiler:"gc", Platform:"linux/amd64"}
+	```
+
+	Or shorter version:
+
+	```
+	Client Version: v1.14.3
+	Server Version: v1.11.8-eks-7c34c0
+	```
+
+- Get nodes:
+
+	```
+	kubectl get nodes
+	NAME                                           STATUS   ROLES    AGE   VERSION
+	ip-192-168-32-118.us-west-2.compute.internal   Ready    <none>   56s   v1.11.9
+	ip-192-168-67-48.us-west-2.compute.internal    Ready    <none>   57s   v1.11.9
+	```
 
 ## Do things
 
@@ -43,7 +68,7 @@ Server Version: version.Info{Major:"1", Minor:"11+", GitVersion:"v1.11.8-eks-7c3
 		-o jsonpath='{.status.loadBalancer.ingress[0].hostname}')/hello
 	```
 
-## Update cluster
+## Update cluster to 1.12
 
 ### Update control plane
 
@@ -61,12 +86,20 @@ Server Version: version.Info{Major:"1", Minor:"11+", GitVersion:"v1.11.8-eks-7c3
 	[ℹ]  you will need to follow the upgrade procedure for all of nodegroups and add-ons
 	```
 
-	Check k8s version:
+- Check k8s version:
 
 	```
 	kubectl version
 	Client Version: version.Info{Major:"1", Minor:"14", GitVersion:"v1.14.3", GitCommit:"5e53fd6bc17c0dec8434817e69b04a25d8ae0ff0", GitTreeState:"clean", BuildDate:"2019-06-07T09:57:54Z", GoVersion:"go1.12.5", Compiler:"gc", Platform:"darwin/amd64"}
 	Server Version: version.Info{Major:"1", Minor:"12+", GitVersion:"v1.12.6-eks-d69f1b", GitCommit:"d69f1bf3669bf00b7f4a758e978e0e7a1e3a68f7", GitTreeState:"clean", BuildDate:"2019-02-28T20:26:10Z", GoVersion:"go1.10.8", Compiler:"gc", Platform:"linux/amd64"}
+	```
+
+	Or shorter version:
+
+	```
+	kubectl version --short
+	Client Version: v1.14.3
+	Server Version: v1.12.6-eks-d69f1b
 	```
 
 - Update kube-proxy:
@@ -77,20 +110,35 @@ Server Version: version.Info{Major:"1", Minor:"11+", GitVersion:"v1.11.8-eks-7c3
 	[ℹ]  "kube-proxy" is now up-to-date
 	```
 
-- Get `coredns` version:
+- Base cluster is 1.11 and so it already has CoreDNS as DNS provider. Get `coredns` version:
 
 	```
 	kubectl describe deployment coredns --namespace kube-system | grep Image | cut -d "/" -f 3
 	coredns:v1.1.3
 	```
 
-- Update `coredns` version:
+- Update `coredns` version to `1.2.2`:
 
 	```
 	eksctl utils update-coredns --name upgrade-test --approve
 	[ℹ]  using region us-west-2
+	[ℹ]  replaced "kube-system:Service/kube-dns"
+	[ℹ]  replaced "kube-system:ServiceAccount/coredns"
+	[ℹ]  replaced "kube-system:ConfigMap/coredns"
+	[ℹ]  replaced "kube-system:Deployment.apps/coredns"
+	[ℹ]  replaced "ClusterRole.rbac.authorization.k8s.io/system:coredns"
+	[ℹ]  replaced "ClusterRoleBinding.rbac.authorization.k8s.io/system:coredns"
 	[ℹ]  "coredns" is now up-to-date
 	```
+
+- Check CNI plugin version:
+
+	```
+	kubectl describe daemonset aws-node --namespace kube-system | grep Image | cut -d "/" -f 2
+	amazon-k8s-cni:v1.4.1
+	```
+
+	This is verion `1.4.1` and so we're good.
 
 ### Update data plane
 
@@ -106,7 +154,7 @@ Server Version: version.Info{Major:"1", Minor:"11+", GitVersion:"v1.11.8-eks-7c3
 
 	```
 	eksctl create nodegroup \
-		--cluster upgrade-test \
+		--cluster upgrade-test2 \
 		--version 1.12 \
 		--name ng-1-12 \
 		--node-type m5.large \
@@ -114,6 +162,24 @@ Server Version: version.Info{Major:"1", Minor:"11+", GitVersion:"v1.11.8-eks-7c3
 		--nodes-min 2 \
 		--nodes-max 2 \
 		--node-ami auto
+	[ℹ]  using region us-west-2
+	[ℹ]  nodegroup "ng-1-12" will use "ami-0f11fd98b02f12a4c" [AmazonLinux2/1.12]
+	[ℹ]  1 nodegroup (ng-1-12) was included
+	[ℹ]  exclude rules: ng-5351a550
+	[ℹ]  no nogroups were excluded by the filter
+	[ℹ]  will create a CloudFormation stack for each of 1 nodegroups in cluster "upgrade-test"
+	[ℹ]  1 task: { create nodegroup "ng-1-12" }
+	[ℹ]  building nodegroup stack "eksctl-upgrade-test-nodegroup-ng-1-12"
+	[ℹ]  deploying stack "eksctl-upgrade-test-nodegroup-ng-1-12"
+	[ℹ]  adding role "arn:aws:iam::<account-id>:role/eksctl-upgrade-test-nodegroup-ng-NodeInstanceRole-1MON18UQD45VF" to auth ConfigMap
+	[ℹ]  nodegroup "ng-1-12" has 0 node(s)
+	[ℹ]  waiting for at least 2 node(s) to become ready in "ng-1-12"
+	[ℹ]  nodegroup "ng-1-12" has 2 node(s)
+	[ℹ]  node "ip-192-168-30-170.us-west-2.compute.internal" is ready
+	[ℹ]  node "ip-192-168-64-15.us-west-2.compute.internal" is ready
+	[✔]  created 1 nodegroup(s) in cluster "upgrade-test"
+	[ℹ]  checking security group configuration for all nodegroups
+	[ℹ]  all nodegroups have up-to-date configuration
 	```
 
 - Get nodes:
@@ -134,7 +200,7 @@ Server Version: version.Info{Major:"1", Minor:"11+", GitVersion:"v1.11.8-eks-7c3
 	[ℹ]  include rules: ng-5351a550
 	[ℹ]  1 nodegroup (ng-5351a550) was included
 	[ℹ]  will delete 1 nodegroups from auth ConfigMap in cluster "upgrade-test"
-	[ℹ]  removing role "arn:aws:iam::091144949931:role/eksctl-upgrade-test-nodegroup-ng-NodeInstanceRole-Z09UBQA0S9QZ" from auth ConfigMap (username = "system:node:{{EC2PrivateDNSName}}", groups = ["system:bootstrappers" "system:nodes"])
+	[ℹ]  removing role "arn:aws:iam::<account-id>:role/eksctl-upgrade-test-nodegroup-ng-NodeInstanceRole-Z09UBQA0S9QZ" from auth ConfigMap (username = "system:node:{{EC2PrivateDNSName}}", groups = ["system:bootstrappers" "system:nodes"])
 	[ℹ]  will drain 1 nodegroups in cluster "upgrade-test"
 	[ℹ]  cordon node "ip-192-168-62-120.us-west-2.compute.internal"
 	[ℹ]  cordon node "ip-192-168-88-245.us-west-2.compute.internal"
@@ -170,7 +236,6 @@ Server Version: version.Info{Major:"1", Minor:"11+", GitVersion:"v1.11.8-eks-7c3
 	```
 
 ## Access the application
-
 
 ```
 curl http://$(kubectl get svc/myapp-greeting \

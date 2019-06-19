@@ -1,9 +1,21 @@
 # Update EKS cluster
 
-## Create EKS cluster
+These instructions explain how to update an EKS cluster created using [eksctl](https://eksctl.io). [Updating an Amazon EKS Cluster Kubernetes Version](https://docs.aws.amazon.com/eks/latest/userguide/update-cluster.html) provide detailed instructions.
+
+Read Kubernetes [version skew policy](https://kubernetes.io/docs/setup/release/version-skew-policy/).
+
+## Create EKS 1.11 cluster
 
 ```
 eksctl create cluster --name upgrade-test --version 1.11
+```
+
+Check k8s version:
+
+```
+kubectl version
+Client Version: version.Info{Major:"1", Minor:"14", GitVersion:"v1.14.3", GitCommit:"5e53fd6bc17c0dec8434817e69b04a25d8ae0ff0", GitTreeState:"clean", BuildDate:"2019-06-07T09:57:54Z", GoVersion:"go1.12.5", Compiler:"gc", Platform:"darwin/amd64"}
+Server Version: version.Info{Major:"1", Minor:"11+", GitVersion:"v1.11.8-eks-7c34c0", GitCommit:"7c34c0d2f2d0f11f397d55a46945193a0e22d8f3", GitTreeState:"clean", BuildDate:"2019-03-01T22:49:39Z", GoVersion:"go1.10.8", Compiler:"gc", Platform:"linux/amd64"}
 ```
 
 ## Do things
@@ -33,13 +45,75 @@ eksctl create cluster --name upgrade-test --version 1.11
 
 ## Update cluster
 
+### Update control plane
+
 - Update control plane:
 
 	```
 	eksctl update cluster --name upgrade-test --approve
+	[ℹ]  using region us-west-2
+	[ℹ]  re-building cluster stack "eksctl-upgrade-test-cluster"
+	[✔]  all resources in cluster stack "eksctl-upgrade-test-cluster" are up-to-date
+	[ℹ]  checking security group configuration for all nodegroups
+	[ℹ]  all nodegroups have up-to-date configuration
+	[ℹ]  will upgrade cluster "upgrade-test" control plane from current version "1.11" to "1.12"
+	[✔]  cluster "upgrade-test" control plan e has been upgraded to version "1.12"
+	[ℹ]  you will need to follow the upgrade procedure for all of nodegroups and add-ons
+	```
+
+	Check k8s version:
+
+	```
+	kubectl version
+	Client Version: version.Info{Major:"1", Minor:"14", GitVersion:"v1.14.3", GitCommit:"5e53fd6bc17c0dec8434817e69b04a25d8ae0ff0", GitTreeState:"clean", BuildDate:"2019-06-07T09:57:54Z", GoVersion:"go1.12.5", Compiler:"gc", Platform:"darwin/amd64"}
+	Server Version: version.Info{Major:"1", Minor:"12+", GitVersion:"v1.12.6-eks-d69f1b", GitCommit:"d69f1bf3669bf00b7f4a758e978e0e7a1e3a68f7", GitTreeState:"clean", BuildDate:"2019-02-28T20:26:10Z", GoVersion:"go1.10.8", Compiler:"gc", Platform:"linux/amd64"}
+	```
+
+- Update kube-proxy:
+
+	```
+	eksctl utils update-kube-proxy --name upgrade-test --approve
+	[ℹ]  using region us-west-2
+	[ℹ]  "kube-proxy" is now up-to-date
+	```
+
+- Get `coredns` version:
+
+	```
+	kubectl describe deployment coredns --namespace kube-system | grep Image | cut -d "/" -f 3
+	coredns:v1.1.3
+	```
+
+- Update `coredns` version:
+
+	```
+	eksctl utils update-coredns --name upgrade-test --approve
+	[ℹ]  using region us-west-2
+	[ℹ]  "coredns" is now up-to-date
+	```
+
+### Update data plane
+
+- Get nodegroups
+
+	```
+	eksctl get nodegroups --cluster upgrade-test 
+	CLUSTER		NODEGROUP	CREATED			MIN SIZE	MAX SIZE	DESIRED CAPACITY	INSTANCE TYPE	IMAGE ID
+	upgrade-test	ng-5351a550	2019-06-19T06:29:40Z	2		2		0			m5.large	ami-05ecac759c81e0b0c
+	```
+
+- Launch a new worker node group:
+
+	```
+	eksctl create nodegroup \
+		--cluster upgrade-test \
+		--version 1.12 \
+		--name ng-1-12 \
+		--node-type m5.large \
+		--nodes 2 \
+		--nodes-min 2 \
+		--nodes-max 2 \
+		--node-ami auto
 	```
 
 - 
-eksctl utils update-kube-proxy --name upgrade-test dev --approve
-eksctl utils update-coredns --name upgrade-test --approve
-```

@@ -1,0 +1,17 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: myeks-insights
+  region: us-west-2
+
+nodeGroups:
+  - name: ng-1
+    instanceType: m5.large
+    desiredCapacity: 2
+    ssh:
+      allow: true
+      publicKeyName: arun-us-west2
+    iam:
+      withAddonPolicies:
+        cloudWatch: true

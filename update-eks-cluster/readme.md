@@ -1,6 +1,6 @@
 # Update EKS cluster
 
-These instructions explain how to update an Amazon EKS cluster created using [eksctl](https://eksctl.io). [Updating an Amazon EKS Cluster Kubernetes Version](https://docs.aws.amazon.com/eks/latest/userguide/update-cluster.html) provide detailed instructions.
+These instructions explain how to update an Amazon EKS cluster created using [eksctl](https://eksctl.io). Complete detailed instructions are available at [Updating an Amazon EKS Cluster Kubernetes Version](https://docs.aws.amazon.com/eks/latest/userguide/update-cluster.html).
 
 Read Kubernetes [version skew policy](https://kubernetes.io/docs/setup/release/version-skew-policy/) to learn about how much variance is allowed between control plane and data plane. These instructions will update an EKS 1.11 cluster to 1.12 cluster.
 

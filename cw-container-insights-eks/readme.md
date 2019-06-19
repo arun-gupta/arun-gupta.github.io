@@ -1,5 +1,7 @@
 # CloudWatch Container Insights with Amazon EKS
 
+[Container Insights](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContainerInsights.html) collect, aggregate, and summarize metrics and logs from your containerized applications. It works for Amazon EKS and k8s on EC2. These are brief instructions on how to configure them for an EKS cluster.
+
 ## Create EKS cluster
 
 - Check `eksctl` version:
@@ -127,5 +129,6 @@
 	NAME                       READY   STATUS    RESTARTS   AGE
 	fluentd-cloudwatch-98pcr   1/1     Running   0          3m38s
 	fluentd-cloudwatch-rfprv   1/1     Running   0          3m38s
-	
 	```
+
+- 

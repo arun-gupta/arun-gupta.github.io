@@ -158,15 +158,29 @@
 
 - Watch Container Insights at https://us-west-2.console.aws.amazon.com/cloudwatch/home?region=us-west-2#cw:dashboard=Container
 
-	Default view:
+	Default view is cluster:
 
 	![default view](cw-container-insights-cluster-view.png)
 
 	Pick the cluster:
 
-	![pick cluster](cw-container-insights-views.png)
+	![pick cluster](cw-container-insights-cluster.png)
 
-	Pick the view:
+	Select the view:
 
 	![pick view](cw-container-insights-views.png)
+
+	Nodes view:
+
+	![nodes view](cw-container-insights-nodes.png)
+
+	Services view:
+
+	![services view](cw-container-insights-services.png)
+
+	Pods view:
+
+	![pods view](cw-container-insights-pods.png)
+
+
 

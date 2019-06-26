@@ -13,9 +13,9 @@
 	v0.17.19
 	```
 
-- Install AWS IAM Authenticator as explained at [https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html] and include in the path
+- Install [AWS IAM Authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html) and include in the path.
 
-- The code for EKS cluster is in [myeks](myeks) diretory. Create EKS cluster:
+- The code for EKS cluster is in [myeks](https://github.com/arun-gupta/arun-gupta.github.io/blob/master/pulumi-eks/myeks) diretory. Create EKS cluster:
 
 	```
 	cd myeks

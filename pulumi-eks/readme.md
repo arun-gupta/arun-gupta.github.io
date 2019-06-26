@@ -21,3 +21,17 @@
 	cd myeks
 	pulumi up --yes
 	```
+
+- Access the cluster:
+
+	```
+	pulumi stack output kubeconfig > kubeconfig
+	kubectl --kubeconfig kubeconfig version --short
+	Client Version: v1.15.0
+	Server Version: v1.12.6-eks-d69f1b
+	kubectl --kubeconfig kubeconfig get nodes
+	NAME                          STATUS   ROLES    AGE   VERSION
+	ip-10-0-157-75.ec2.internal   Ready    <none>   17m   v1.12.7
+	ip-10-0-62-175.ec2.internal   Ready    <none>   17m   v1.12.7
+	```
+

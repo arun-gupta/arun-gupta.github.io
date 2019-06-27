@@ -19,6 +19,8 @@
 	mvn compile
 	```
 
+	NOTE: This will only create EKS control plane.
+	
 - Deploy the stack:
 
 	```

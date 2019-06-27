@@ -35,3 +35,9 @@
 	ip-10-0-62-175.ec2.internal   Ready    <none>   17m   v1.12.7
 	```
 
+- Destroy the cluster:
+
+  ```
+  pulumi destroy --yes
+  ```
+

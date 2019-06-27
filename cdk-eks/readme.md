@@ -19,8 +19,8 @@
 	mvn compile
 	```
 
-	NOTE: This will only create EKS control plane.
-	
+	NOTE: This will only create EKS control plane. Data Plane is tracked at https://github.com/awslabs/aws-cdk/issues/3100.
+
 - Deploy the stack:
 
 	```

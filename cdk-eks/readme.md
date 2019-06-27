@@ -13,7 +13,7 @@
 	0.36.0 (build 6d38487)
 	```
 
-- Compile the stack:
+- Use the [CDK application](https://github.com/arun-gupta/arun-gupta.github.io/tree/master/cdk-eks/myeks), compile the stack:
 
 	```
 	mvn compile

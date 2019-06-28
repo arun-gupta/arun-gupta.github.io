@@ -72,6 +72,44 @@
 	ip-192-168-33-52.us-west-2.compute.internal   34m          0%     327Mi           1%    
 	```
 
+## Deploy Prometheus
+
+- Create namespace:
+
+	```
+	kubectl create namespace prometheus
+	```
+
+- Deploy Prometheus:
+
+	```
+	helm install stable/prometheus \
+		--name prometheus \
+		--namespace prometheus \
+		--set alertmanager.persistentVolume.storageClass="gp2",server.persistentVolume.storageClass="gp2"
+	```
+
+  Verify:
+
+  ```
+  kubectl get pods -n prometheus
+  NAME                                             READY   STATUS    RESTARTS   AGE
+	prometheus-alertmanager-599df44bc8-6f7zq         1/2     Running   0          22s
+	prometheus-kube-state-metrics-868c554d8c-59hmm   1/1     Running   0          22s
+	prometheus-node-exporter-9mqdk                   1/1     Running   0          22s
+	prometheus-node-exporter-rm5r5                   1/1     Running   0          22s
+	prometheus-pushgateway-56967b8d8f-r8fpz          1/1     Running   0          22s
+	prometheus-server-6cdd9b9884-dfqwn               1/2     Running   0          22s
+  ```
+
+- Port forward:
+
+	```
+	kubectl --namespace=prometheus port-forward deploy/prometheus-server 9090
+	```
+
+	Access [Prometheus console](http://localhost:9090).
+
 ## Deploy application
 
 - Get application:
@@ -83,7 +121,21 @@
 - Deploy application:
 
 	```
-	kubectl create -f k8s.yaml
+	helm install --name myapp chart
+	```
+
+- Access the application:
+
+	```
+	ENDPOINT=$(kubectl get svc/myapp-greeting \
+		-o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
+	curl http://$ENDPOINT/hello
+	```
+
+- Access metrics
+
+	```
+	curl http://$ENDPOINT/actuator/prometheus
 	```
 
 How to aggregate app metrics with Prometheus running in EKS?
@@ -107,7 +159,12 @@ How to aggregate app metrics with Prometheus running in EKS?
 
 	```
 	kubectl get --raw /apis/custom.metrics.k8s.io/v1beta1  | jq
-	{"kind":"APIResourceList","apiVersion":"v1","groupVersion":"custom.metrics.k8s.io/v1beta1","resources":[]}
+	{
+	  "kind": "APIResourceList",
+	  "apiVersion": "v1",
+	  "groupVersion": "custom.metrics.k8s.io/v1beta1",
+	  "resources": []
+	}
 	```
 
 - 

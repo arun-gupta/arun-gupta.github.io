@@ -1,6 +1,6 @@
 # Horizontal Pod Autoscaler with application metrics
 
-## Setup metrics server
+## Setup EKS
 
 - Create an EKS cluster:
 
@@ -20,6 +20,10 @@
 	kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller
 	helm init --service-account tiller
 	```
+
+## Install metrics server
+
+This is needed to generate resource metrics.
 
 - Deploy the metrics server:
 
@@ -63,6 +67,18 @@
 	}
   ```
 
+  Get more metrics about nodes:
+
+  ```
+  kubectl get --raw /apis/metrics.k8s.io/v1beta1/nodes  | jq
+  ```
+
+  Get more details about pods:
+
+  ```
+  kubectl get --raw /apis/metrics.k8s.io/v1beta1/pods  | jq
+  ```
+
 - Check node resource usage:
 
 	```
@@ -72,15 +88,31 @@
 	ip-192-168-33-52.us-west-2.compute.internal   34m          0%     327Mi           1%    
 	```
 
-## Deploy Prometheus
+## Install Prometheus adapter
 
-- Create namespace:
+This is needed to generate custom metrics that will be used for HPA.
+
+- Deploy Prometheus adapter to enable custom metrics:
 
 	```
-	kubectl create namespace prometheus
+	helm install --name prometheus-adapter stable/prometheus-adapter -n prometheus-adapter
 	```
 
-- Deploy Prometheus:
+- Check custom metrics:
+
+	```
+	kubectl get --raw /apis/custom.metrics.k8s.io/v1beta1  | jq
+	{
+	  "kind": "APIResourceList",
+	  "apiVersion": "v1",
+	  "groupVersion": "custom.metrics.k8s.io/v1beta1",
+	  "resources": []
+	}
+	```
+
+## Install Prometheus
+
+- Install Prometheus:
 
 	```
 	helm install stable/prometheus \
@@ -93,13 +125,6 @@
 
   ```
   kubectl get pods -n prometheus
-  NAME                                             READY   STATUS    RESTARTS   AGE
-	prometheus-alertmanager-599df44bc8-6f7zq         1/2     Running   0          22s
-	prometheus-kube-state-metrics-868c554d8c-59hmm   1/1     Running   0          22s
-	prometheus-node-exporter-9mqdk                   1/1     Running   0          22s
-	prometheus-node-exporter-rm5r5                   1/1     Running   0          22s
-	prometheus-pushgateway-56967b8d8f-r8fpz          1/1     Running   0          22s
-	prometheus-server-6cdd9b9884-dfqwn               1/2     Running   0          22s
   ```
 
 - Port forward:
@@ -108,9 +133,11 @@
 	kubectl --namespace=prometheus port-forward deploy/prometheus-server 9090
 	```
 
-	Access [Prometheus console](http://localhost:9090).
+	Access [Prometheus Console](localhost:9090)
 
 ## Deploy application
+
+This application generates custom metrics.
 
 - Get application:
 
@@ -140,31 +167,5 @@
 
 How to aggregate app metrics with Prometheus running in EKS?
 
+
 ## Setup HPA
-
-- Custom metrics are not enabled by default:
-
-	```
-	kubectl get --raw /apis/custom.metrics.k8s.io/v1beta1  | jq
-	Error from server (NotFound): the server could not find the requested resource
-	```
-
-- Deploy Prometheus operator, this will also enable custom metrics:
-
-	```
-	helm install --name my-release stable/prometheus-adapter
-	```
-
-- Check custom metrics again:
-
-	```
-	kubectl get --raw /apis/custom.metrics.k8s.io/v1beta1  | jq
-	{
-	  "kind": "APIResourceList",
-	  "apiVersion": "v1",
-	  "groupVersion": "custom.metrics.k8s.io/v1beta1",
-	  "resources": []
-	}
-	```
-
-- 

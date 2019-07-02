@@ -154,8 +154,7 @@ This application generates custom metrics.
 - Access the application:
 
 	```
-	ENDPOINT=$(kubectl get svc/myapp-greeting \
-		-o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
+	ENDPOINT=$(kubectl get svc/myapp-greeting -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
 	curl http://$ENDPOINT/hello
 	```
 
@@ -165,7 +164,48 @@ This application generates custom metrics.
 	curl http://$ENDPOINT/actuator/prometheus
 	```
 
-How to aggregate app metrics with Prometheus running in EKS?
+## Setup Grafana
 
+- Install Grafana:
+
+	```
+	helm install stable/grafana \
+		--name grafana \
+		--namespace grafana
+	```
+
+- Port forward:
+
+	```
+	```
 
 ## Setup HPA
+
+- Create Horizontal Pod Autoscaler:
+
+	```
+	kubectl create -f hpa.yaml
+	```
+
+	HPA should read the metrics `http_server_requests_seconds_max{uri="/hello"}`. How would it?
+
+## Generate traffic
+
+- Download traffic generator:
+
+	```
+	curl -o hey https://storage.googleapis.com/jblabs/dist/hey_darwin_v0.1.2
+	```
+
+- Monitor latency of HTTP requests to '/hello':
+
+	```
+	watch -n 1 -d "curl http://$ENDPOINT/actuator/prometheus | grep http_server_requests_seconds_max | grep hello"
+	```
+
+- Generate traffic:
+
+	```
+	hey_darwin_v0.1.2 -c 100 -n 5000 -m GET http://$ENDPOINT/hello
+	```
+

@@ -1,4 +1,4 @@
-# Firecracker and Ignite
+# Ignite VM using Firecracker
 
 Let's create a [Ignite](https://github.com/weaveworks/ignite) VM using Firecracker.
 

@@ -129,4 +129,25 @@ Let's create a [Ignite](https://github.com/weaveworks/ignite) VM using Firecrack
 	tmpfs           496M     0  496M   0% /sys/fs/cgroup
 	tmpfs           100M     0  100M   0% /run/user/0
 	```
-	
+
+- Stop and remove the VM:
+
+	```
+	root@ip-172-31-26-37:~# ignite stop my-vm
+	INFO[0000] Stopped VM with name "my-vm" and ID "bc8fa3b71176d548" 
+	root@ip-172-31-26-37:~# ignite rm my-vm
+	```
+
+- Exit out of the VM:
+
+	```
+	exit
+	```
+
+- Exit out of the EC2 instance:
+
+	```
+	exit
+	```
+
+- Terminate the EC2 instance

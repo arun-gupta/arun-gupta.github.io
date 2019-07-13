@@ -1,38 +1,53 @@
 # Firecracker and Ignite
 
+Let's create a [Ignite](https://github.com/weaveworks/ignite) VM using Firecracker.
+
 - Create an Ubuntu 18.04 `c5.metal` instance
 - Login to the instance:
 
+	```
 	ssh -i ~/.ssh/arun-us-west1.pem ubuntu@<ip-address>
+	```
 
 - Install Docker:
 
+	```
 	sudo apt-get update
 	sudo apt-get docker.io -y
+	```
 
 - Install Ignite binary:
 
+	```
 	export VERSION=v0.4.1
 	curl -fLo ignite https://github.com/weaveworks/ignite/releases/download/${VERSION}/ignite
 	chmod +x ignite
 	sudo mv ignite /usr/local/bin
+	```
 
 - Create a root shell:
 
+	```
 	sudo -s
+	```
 
 - Verify the version:
 
+	```
 	ignite version
 	Ignite version: version.Info{Major:"0", Minor:"4", GitVersion:"v0.4.1", GitCommit:"32e40b90d89a0142368800282d800bfc56ee50ae", GitTreeState:"clean", BuildDate:"2019-07-12T17:26:40Z", GoVersion:"go1.12.1", Compiler:"gc", Platform:"linux/amd64"}
 	Firecracker version: v0.17.0
+	```
 
 - Install Docker
 
+	```
 	apt-get install docker.io -y
+	```
 
 - Run new VM:
 
+	```
 	ignite run weaveworks/ignite-ubuntu \
 		--name my-vm \
 		--cpus 2 \
@@ -47,12 +62,15 @@
 	INFO[0013] Created VM with ID "bc8fa3b71176d548" and name "my-vm" 
 	INFO[0013] Pulling image "weaveworks/ignite:v0.4.1"...  
 	INFO[0015] Started Firecracker VM "bc8fa3b71176d548" in a container with ID "1ba2c7919118e309de2197113292489ae9105de930139d46cc0de4109b05112d" 
+	```
 
 - List the VM:
 
+	```
 	ignite vm ls
 	VM ID			IMAGE				KERNEL					CREATED	SIZE	CPUS	MEMORY		STATE	IPS		PORTS	NAME
 	bc8fa3b71176d548	weaveworks/ignite-ubuntu:latest	weaveworks/ignite-kernel:4.19.47	46s ago	6.0 GB	2	1024.0 MB	Running	172.17.0.2	my-vm
+	```
 
 - SSH into the VM:
 
@@ -77,7 +95,7 @@
 	applicable law.
 	```
 
-- Check the CPUs:
+- Check CPUs:
 
 	```
 	root@bc8fa3b71176d548:~# lscpu | grep CPU

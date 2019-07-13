@@ -39,12 +39,6 @@ Let's create a [Ignite](https://github.com/weaveworks/ignite) VM using Firecrack
 	Firecracker version: v0.17.0
 	```
 
-- Install Docker
-
-	```
-	apt-get install docker.io -y
-	```
-
 - Run new VM:
 
 	```

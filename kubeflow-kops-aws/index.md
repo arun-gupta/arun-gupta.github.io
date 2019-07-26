@@ -14,6 +14,21 @@
 
 	kops create cluster ${NAME} --node-count=4 --zones=${AWS_AVAILABILITY_ZONES}
 
-- Download Kubeflow from https://github.com/kubeflow/kubeflow/releases/
+- Download Kubeflow from https://github.com/kubeflow/kubeflow/releases/ and extract it
+- chmod +x kfctl
+- Setup Kubeflow:
 
-- 
+	```
+	export PATH=$PATH:/Users/argu/tools/kubeflow/0.6.0
+	export KFAPP=kfapp
+	export CONFIG="https://raw.githubusercontent.com/kubeflow/kubeflow/master/bootstrap/config/kfctl_existing_arrikto.0.6.yaml"
+
+	# Specify credentials for the default user.
+	export KUBEFLOW_USER_EMAIL="admin@kubeflow.org"
+	export KUBEFLOW_PASSWORD="12341234"
+
+	kfctl init ${KFAPP} --config=${CONFIG} -V
+	cd ${KFAPP}
+	kfctl generate all -V
+	kfctl apply all -V
+	```

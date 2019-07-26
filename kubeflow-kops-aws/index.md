@@ -14,7 +14,7 @@
 
 	kops create cluster ${NAME} --node-count=4 --zones=${AWS_AVAILABILITY_ZONES}
 
-- Download Kubeflow from https://github.com/kubeflow/kubeflow/releases/ and extract it
+- Download Kubeflow 0.6.0 from https://github.com/kubeflow/kubeflow/releases/ and extract it
 - chmod +x kfctl
 - Setup Kubeflow:
 

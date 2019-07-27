@@ -1,4 +1,6 @@
-#Install Kubeflow on self-managed Kubernetes on AWS
+# Install Kubeflow on self-managed Kubernetes on AWS
+
+This post will explain how to setup Kubeflow an self-managed Kubernetes cluster on AWS. Even though it uses kops for creating the cluster but it could've been created any other way, such as CloudFormation or Terraform.
 
 - Install kops:
 
@@ -43,4 +45,8 @@
 	kfctl apply all -V
 	```
 
-- 
+- Access Kubeflow dashboard endpoint address:
+
+	```
+	kubectl get svc -n istio-system istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'
+	```

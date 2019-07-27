@@ -50,3 +50,9 @@ This post will explain how to setup Kubeflow an self-managed Kubernetes cluster 
 	```
 	kubectl get svc -n istio-system istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'
 	```
+
+	It gives the error:
+
+	```
+	This page isn’t working a86596f68b0a511e998a30628ef7c2fc-315815572.us-west-2.elb.amazonaws.com didn’t send any data.
+	```

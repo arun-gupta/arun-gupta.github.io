@@ -19,7 +19,8 @@ This post will explain how to setup Kubeflow an self-managed Kubernetes cluster 
 - Create cluster:
 
 	```
-	kops create cluster ${NAME} --node-count=4 --zones=${AWS_AVAILABILITY_ZONES}
+	kops create cluster ${NAME} --node-count=4 --zones=${AWS_AVAILABILITY_ZONES} --node-size=m5.2xlarge --master-size=m5.xlarge
+	kops update cluster --name ${NAME} --yes
 	```
 
 - Download Kubeflow:

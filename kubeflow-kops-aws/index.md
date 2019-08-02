@@ -1,6 +1,8 @@
 # Install Kubeflow on self-managed Kubernetes on AWS
 
-This post will explain how to setup Kubeflow an self-managed Kubernetes cluster on AWS. Even though it uses kops for creating the cluster but it could've been created any other way, such as CloudFormation or Terraform.
+This post will explain how to setup Kubeflow on a self-managed Kubernetes cluster on AWS. Even though it uses kops for creating the cluster but it could've been created any other way, such as CloudFormation or Terraform.
+
+## Create Kubernetes cluster using kops
 
 - Install kops:
 
@@ -27,7 +29,6 @@ This post will explain how to setup Kubeflow an self-managed Kubernetes cluster 
 
 	```
 	kubectl create -f https://raw.githubusercontent.com/kubernetes/kops/master/addons/kubernetes-dashboard/v1.10.1.yaml
-
 	```
 
 - Download Kubeflow:
@@ -53,13 +54,15 @@ This post will explain how to setup Kubeflow an self-managed Kubernetes cluster 
 	kfctl apply all -V
 	```
 
-	Optionally, [Arrikto configuration](https://www.kubeflow.org/docs/started/getting-started-k8s/#Kubeflow-for-Existing-Clusters---by-Arrikto) may be used. In that case, `CONFIG` enviironment variable needs to be:
+	Optionally, [Arrikto configuration](https://www.kubeflow.org/docs/started/getting-started-k8s/#Kubeflow-for-Existing-Clusters---by-Arrikto) may be used. In that case, `CONFIG` environment variable needs to be set accordingly:
 
 	```
 	export CONFIG="https://raw.githubusercontent.com/kubeflow/kubeflow/master/bootstrap/config/kfctl_existing_arrikto.0.6.yaml"
 	```
 
-## Dashboard using Istio Ingress Gateway
+## Kubeflow Dashboard
+
+Kubeflow dashboard is accessible using Istio ingress gateway.
 
 ### Using NodePort
 
@@ -101,6 +104,8 @@ This post will explain how to setup Kubeflow an self-managed Kubernetes cluster 
 
 ### Using LoadBalancer
 
+Instead of `NodePort`, you may want to access the dashboard over an ELB. In that case, change `NodePort` of the service to `LoadBalancer`.
+
 - Run proxy:
 
 	```
@@ -116,11 +121,11 @@ This post will explain how to setup Kubeflow an self-managed Kubernetes cluster 
 	```
 
 - Click on `SIGN IN`
-- Access `istio-ingressgateway` in the dashboard http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/service/istio-system/istio-ingressgateway?namespace=istio-system
+- Access `istio-ingressgateway` in the [dashboard](http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/service/istio-system/istio-ingressgateway?namespace=istio-system)
 - Click on `EDIT` (top right)
 - Replace `NodePort` with `LoadBalancer`
 - Click on `Update`
-- Wait for 3 minutes for the load balancer to be deployed
+- Wait for ~3 minutes for the load balancer to be provisioned and ready
 - Get endpoint address:
 
 	```

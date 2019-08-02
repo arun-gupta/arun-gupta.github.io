@@ -91,6 +91,7 @@ This post will explain how to setup Kubeflow an self-managed Kubernetes cluster 
 		```
 		kubectl proxy
 		```
+
 	-	Access http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
 	- Select `Token`
 	- Generate token:
@@ -98,6 +99,7 @@ This post will explain how to setup Kubeflow an self-managed Kubernetes cluster 
 		```
 		kops get secrets --type secret admin -oplaintext
 		```
+
 	- Click on `SIGN IN`
 - Access `istio-ingressgateway` in the dashboard [http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/service/istio-system/istio-ingressgateway?namespace=istio-system]
 - Click on `EDIT` (top right)
@@ -109,4 +111,5 @@ This post will explain how to setup Kubeflow an self-managed Kubernetes cluster 
 	```
 	kubectl get svc -n istio-system istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'
 	```
+	
 - Access in the browser, now everything is working.

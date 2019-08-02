@@ -53,6 +53,12 @@ This post will explain how to setup Kubeflow an self-managed Kubernetes cluster 
 	kfctl apply all -V
 	```
 
+	Optionally, [Arrikto configuration](https://www.kubeflow.org/docs/started/getting-started-k8s/#Kubeflow-for-Existing-Clusters---by-Arrikto) may be used. In that case, `CONFIG` enviironment variable needs to be:
+
+	```
+	export CONFIG="https://raw.githubusercontent.com/kubeflow/kubeflow/master/bootstrap/config/kfctl_existing_arrikto.0.6.yaml"
+	```
+
 ## Dashboard using Istio Ingress Gateway
 
 ### Using NodePort
@@ -112,3 +118,17 @@ This post will explain how to setup Kubeflow an self-managed Kubernetes cluster 
 	```
 
 - Access in the browser, now everything is working.
+
+### Using Arrikto
+
+- Get Kubeflow dashboard endpoint address:
+
+	```
+	 kubectl get svc -n istio-system istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'
+	```
+
+- Access endpoint in the browser. It gives the error:
+
+	```
+	This page isn’t working a86596f68b0a511e998a30628ef7c2fc-315815572.us-west-2.elb.amazonaws.com didn’t send any data.
+	```

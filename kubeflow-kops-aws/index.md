@@ -63,6 +63,14 @@ This post will explain how to setup Kubeflow an self-managed Kubernetes cluster 
 
 ### Using NodePort
 
+- Get details about `istio-ingressgateway`:
+
+	```
+	kubectl get svc/istio-ingressgateway -n istio-system
+	NAME                   TYPE           CLUSTER-IP     EXTERNAL-IP                                                              PORT(S)                                                                                                                                      AGE
+	istio-ingressgateway   LoadBalancer   100.67.48.97   aced4d9a7b4bd11e9a59f0671efeaf73-301750868.us-west-2.elb.amazonaws.com   15020:31609/TCP,80:31380/TCP,443:31390/TCP,31400:31400/TCP,15029:30410/TCP,15030:31449/TCP,15031:32061/TCP,15032:32019/TCP,15443:30001/TCP   13h
+	```
+
 - Get internal IP address of the EC2 instance where `istio-ingressgateway` pod is running:
 
 	```
@@ -80,14 +88,14 @@ This post will explain how to setup Kubeflow an self-managed Kubernetes cluster 
 	--output text
 	```
 
-- Enable port 80 access in the security group
+- Enable access to port `31380` in the security group. The security group name would be something like `nodes.<cluster-name>.k8s.local`.
 - Access istio ingress endpoint:
 
 	```
-	open https://<public-ip>:80
+	open https://<public-ip>:31380
 	```
 
-	The service endpoint is inaccessible.
+	Kubeflow dashboard is accessible.
 
 ### Using LoadBalancer
 
@@ -97,7 +105,7 @@ This post will explain how to setup Kubeflow an self-managed Kubernetes cluster 
 	kubectl proxy
 	```
 
--	Access Kubernetes Dashboard http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
+-	Access [Kubernetes Dashboard](http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/)
 - Select `Token`
 - Generate token:
 
@@ -117,7 +125,7 @@ This post will explain how to setup Kubeflow an self-managed Kubernetes cluster 
 	kubectl get svc -n istio-system istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'
 	```
 
-- Access in the browser, now everything is working.
+	Kubeflow dashboard is accessible.
 
 ### Using Arrikto
 

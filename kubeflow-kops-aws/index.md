@@ -89,7 +89,7 @@ This post will explain how to setup Kubeflow an self-managed Kubernetes cluster 
 
 	The service endpoint is inaccessible.
 
-## Using LoadBalancer
+### Using LoadBalancer
 
 - Run proxy:
 

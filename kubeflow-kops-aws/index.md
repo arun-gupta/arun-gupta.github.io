@@ -97,6 +97,8 @@ This post will explain how to setup Kubeflow an self-managed Kubernetes cluster 
 
 	Kubeflow dashboard is accessible.
 
+	![Kubeflow Dashboard](kubeflow-dashboard.png)
+
 ### Using LoadBalancer
 
 - Run proxy:

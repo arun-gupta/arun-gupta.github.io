@@ -100,7 +100,7 @@ This post will explain how to setup Kubeflow an self-managed Kubernetes cluster 
 	```
 
 - Click on `SIGN IN`
-- Access `istio-ingressgateway` in the dashboard [http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/service/istio-system/istio-ingressgateway?namespace=istio-system]
+- Access `istio-ingressgateway` in the dashboard http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/service/istio-system/istio-ingressgateway?namespace=istio-system
 - Click on `EDIT` (top right)
 - Replace `NodePort` with `LoadBalancer`
 - Click on `Update`

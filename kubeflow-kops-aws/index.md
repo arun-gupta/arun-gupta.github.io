@@ -132,3 +132,28 @@ This post will explain how to setup Kubeflow an self-managed Kubernetes cluster 
 	```
 	This page isn’t working a86596f68b0a511e998a30628ef7c2fc-315815572.us-west-2.elb.amazonaws.com didn’t send any data.
 	```
+
+- Pod is running:
+
+	```
+	kubectl get pods -n istio-system -l app=istio-ingressgateway
+	NAME                                    READY   STATUS    RESTARTS   AGE
+	istio-ingressgateway-5f55c95767-wj4w7   1/1     Running   0          12m
+	```
+
+- Endpoints are registered:
+
+	```
+	kubectl get endpoints -n istio-system istio-ingressgateway
+	NAME                   ENDPOINTS                                                     AGE
+	istio-ingressgateway   100.96.3.4:15031,100.96.3.4:15029,100.96.3.4:80 + 7 more...   13m
+	```
+
+- Pod logs seem fine:
+
+	```
+	2019-08-02T12:51:32.830632Z	info	Envoy proxy is ready
+	[2019-08-02T12:55:29.269Z] "GET /dex/.well-known/openid-configuration HTTP/1.1" 200 - "-" 0 945 4 1 "172.20.34.128" "Go-http-client/1.1" "85878fb5-046b-9b9e-aa2c-1c01409d6cf5" "a07340f6cb52411e9ac6706f7eeacea4-1454642154.us-west-2.elb.amazonaws.com:5556" "100.96.1.7:5556" outbound|5556||dex.kubeflow.svc.cluster.local - 100.96.3.4:5556 172.20.34.128:56986 a07340f6cb52411e9ac6706f7eeacea4-1454642154.us-west-2.elb.amazonaws.com
+	[2019-08-02T13:01:46.934Z] "GET / HTTP/1.1" 302 UAEX "-" 0 350 1 0 "100.96.3.1" "HTTP Banner Detection (https://security.ipip.net)" "5788a545-99f7-9716-8f0d-c46355f93a8b" "54.69.224.129" "-" - - 100.96.3.4:443 100.96.3.1:8736 -
+	```
+

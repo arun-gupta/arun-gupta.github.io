@@ -4,7 +4,7 @@ Arun Gupta is vice president and general manager of Open Ecosystem Initiatives a
 
 As an elected chair of the Cloud Native Computing Foundation (CNCF) Governing Board, Arun works with CNCF leadership and member companies to grow cloud native ecosystem. He has delivered technical talks in 45+ countries, authored multiple books, and is a Docker Captain, Java Champion, and Java User Group leader. He also founded the Devoxx4Kids chapter in the U.S. and continues to promote technology education among children.
 
-Arun holds two patents on using XML and XSL for an efficient generation of test reports. Arun is an avid runner, and is easily accessible at @arungupta on Twitter.
+Arun holds two patents on using XML and XSL for an efficient generation of test reports. Arun is an avid runner, and is easily accessible at <a href="https://twitter.com/arungupta">@arungupta</a> on Twitter or on <a rel="me" href="https://sfba.social/@arungupta">@arungupta@sfba.social</a> on Mastodon.
 
 ## Old
 
@@ -14,4 +14,3 @@ Arun Gupta is head of the Open Source Program Office at Apple and chairperson of
 
 Arun Gupta is head of the Open Source Program Office and drives several cloud native efforts at Apple, and the chairperson of CNCF Governing Board. He has extensive hands-on experience in cloud, enterprise, and open source. He has deep knowledge about building, nurturing, and engaging with technical communities using collaboration and passion. He has extensive speaking experience in 45+ countries on myriad topics. Gupta also founded the Devoxx4Kids chapter in the US and continues to promote technology education among children. An open source enthusiast for over two decades, an author of several books, an avid runner, a Docker Captain, a Java Champion, a JUG leader, he is easily accessible at @arungupta on twitter.
 
-<a rel="me" href="https://sfba.social/@arungupta">Mastodon</a>

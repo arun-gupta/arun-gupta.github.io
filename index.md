@@ -13,3 +13,5 @@ Arun Gupta is head of the Open Source Program Office at Apple and chairperson of
 ## Another version
 
 Arun Gupta is head of the Open Source Program Office and drives several cloud native efforts at Apple, and the chairperson of CNCF Governing Board. He has extensive hands-on experience in cloud, enterprise, and open source. He has deep knowledge about building, nurturing, and engaging with technical communities using collaboration and passion. He has extensive speaking experience in 45+ countries on myriad topics. Gupta also founded the Devoxx4Kids chapter in the US and continues to promote technology education among children. An open source enthusiast for over two decades, an author of several books, an avid runner, a Docker Captain, a Java Champion, a JUG leader, he is easily accessible at @arungupta on twitter.
+
+<a rel="me" href="https://sfba.social/@arungupta">Mastodon</a>

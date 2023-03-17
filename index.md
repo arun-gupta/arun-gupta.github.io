@@ -4,7 +4,7 @@ Arun Gupta is vice president and general manager of Open Ecosystem Initiatives a
 
 As an elected chair of the Cloud Native Computing Foundation (CNCF) Governing Board, Arun works with CNCF leadership and member companies to grow cloud native ecosystem. He also participates in the Open Source Security Foundation (OpenSSF) and Linux Foundation Governing Boards. He has delivered technical talks in 40+ countries, authored multiple books, and is a Docker Captain, Java Champion, and Java User Group leader. He also founded the Devoxx4Kids chapter in the U.S. and continues to promote technology education among children.
 
-Arun holds two patents on using XML and XSL for an efficient generation of test reports. Arun is an avid runner, and is easily accessible at <a href="https://twitter.com/arungupta">@arungupta</a> on Twitter and at <a rel="me" href="https://sfba.social/@arungupta">@arungupta@sfba.social</a> on Mastodon.
+Arun holds two patents on using XML and XSL for an efficient generation of test reports. Arun is an avid runner, and is easily accessible at <a href="https://twitter.com/arungupta">@arungupta</a> on Twitter and at <a rel="me" href="https://sfba.social/@arungupta">@arungupta@sfba.social</a> on Mastodon. Complete details at https://en.everybodywiki.com/Arun_Gupta.
 
 ## Old
 

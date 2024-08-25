@@ -1,5 +1,10 @@
 # Arun Gupta Bio
 
+## 500 character version
+Arun Gupta is vice president of Open Ecosystem Initiatives at Intel Corporation. He is an open source strategist, advocate, and practitioner for over two decades. He has taken companies such as Apple, Amazon, and Sun Microsystems through systemic changes to embrace open source principles. He is the elected chair of the CNCF GB and elected Chair of the OpenSSF GB. He has delivered technical talks in 45+ countries and authored multiple books. He is a fitness and kindness enthusiast.
+
+## Longer version
+
 Arun Gupta is vice president and general manager of Open Ecosystem Initiatives at Intel Corporation. He is an open source strategist, advocate, and practitioner for over two decades. He has taken companies such as Apple, Amazon, and Sun Microsystems through systemic changes to embrace open source principles, contribute and collaborate effectively.
 
 As an elected chair of the Cloud Native Computing Foundation (CNCF) Governing Board, Arun works with CNCF leadership and member companies to grow cloud native ecosystem. He is the elected Governing Board Chair of the Open Source Security Foundation (OpenSSF) focused on securing the open source software ecosystem. He also participates on the Linux Foundation Governing Board. He has delivered technical talks in 45+ countries, authored multiple books, and is a Docker Captain, Java Champion, and Java User Group leader. He is a fitness and kindness enthusiast, practices mindfulness, and is passionate about promoting technology education among children.

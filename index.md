@@ -5,6 +5,14 @@ Arun Gupta is vice president of Open Ecosystem Initiatives at Intel Corporation.
 
 ## Longer version
 
+Arun Gupta is vice president and general manager of Open Ecosystem Initiatives at Intel. He has been an open source strategist, advocate, and practitioner for over two decades. He has taken companies such as Apple, Amazon, and Sun Microsystems, and now Intel, through systemic changes to embrace open source principles, contribute and collaborate effectively in open source. He has deep expertise in building developer communities and fostering innovation through open collaboration. His leadership has empowered countless developers and organizations to thrive in the open source ecosystem, driving transformative change across the tech industry.
+
+As two-time elected chair of the Cloud Native Computing Foundation (CNCF) Governing Board, Arun works with CNCF leadership and member companies to grow the cloud native ecosystem. He is also the elected Governing Board Chair of the Open Source Security Foundation (OpenSSF) focused on securing the open source software ecosystem. He also participates on the Linux Foundation Governing Board. 
+
+Arun has delivered technical talks in 50+ countries, authored multiple books published by O’Reilly and McGraw Hill, and is a Docker Captain, Java Champion, and Java User Group leader. He is a fitness and kindness enthusiast, practices mindfulness, and is passionate about promoting technology education among children. 
+
+## Another version
+
 Arun Gupta is vice president and general manager of Open Ecosystem Initiatives at Intel Corporation. He is an open source strategist, advocate, and practitioner for over two decades. He has taken companies such as Apple, Amazon, and Sun Microsystems through systemic changes to embrace open source principles, contribute and collaborate effectively.
 
 As an elected chair of the Cloud Native Computing Foundation (CNCF) Governing Board, Arun works with CNCF leadership and member companies to grow cloud native ecosystem. He is the elected Governing Board Chair of the Open Source Security Foundation (OpenSSF) focused on securing the open source software ecosystem. He also participates on the Linux Foundation Governing Board. He has delivered technical talks in 45+ countries, authored multiple books, and is a Docker Captain, Java Champion, and Java User Group leader. He is a fitness and kindness enthusiast, practices mindfulness, and is passionate about promoting technology education among children.

@@ -1,7 +1,7 @@
 # Arun Gupta Bio
 
 ## 500 character version
-Arun Gupta is vice president of Open Ecosystem Initiatives at Intel Corporation. He is an open source strategist, advocate, and practitioner for over two decades. He has taken companies such as Apple, Amazon, and Sun Microsystems through systemic changes to embrace open source principles. He is the elected chair of the CNCF GB and elected Chair of the OpenSSF GB. He has delivered technical talks in 45+ countries and authored multiple books. He is a fitness and kindness enthusiast.
+Arun Gupta is vice president of Developer Programs at Intel Corporation. He has over two decades of experience building, growing, and fostering large developer communities at companies such as Apple, Amazon, and Sun Microsystems. He is the elected chair of the CNCF Governing Board and the elected Chair of the OpenSSF Governing Board. He has delivered technical talks in 50+ countries and authored multiple books. He is a fitness and kindness enthusiast.
 
 ## Longer version
 
@@ -32,6 +32,11 @@ Arun Gupta is head of the Open Source Program Office at Apple and chairperson of
 ## Old
 
 Arun Gupta is head of the Open Source Program Office and drives several cloud native efforts at Apple, and the chairperson of CNCF Governing Board. He has extensive hands-on experience in cloud, enterprise, and open source. He has deep knowledge about building, nurturing, and engaging with technical communities using collaboration and passion. He has extensive speaking experience in 45+ countries on myriad topics. Gupta also founded the Devoxx4Kids chapter in the US and continues to promote technology education among children. An open source enthusiast for over two decades, an author of several books, an avid runner, a Docker Captain, a Java Champion, a JUG leader, he is easily accessible at @arungupta on twitter.
+
+## Old
+
+Arun Gupta is vice president of Open Ecosystem Initiatives at Intel Corporation. He is an open source strategist, advocate, and practitioner for over two decades. He has taken companies such as Apple, Amazon, and Sun Microsystems through systemic changes to embrace open source principles. He is the elected chair of the CNCF GB and elected Chair of the OpenSSF GB. He has delivered technical talks in 45+ countries and authored multiple books. He is a fitness and kindness enthusiast.
+
 
 ## Detailed bio
 

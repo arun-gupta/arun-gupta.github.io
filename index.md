@@ -1,6 +1,10 @@
 # Arun Gupta Bio
 
 ## 500 character version
+Arun Gupta is vice president of Developer Programs at Intel Corporation. He has over two decades of experience building, growing, and fostering large developer communities at companies such as Amazon, Apple, Sun Microsystems, and Intel. He has taken these companies through systemic changes to embrace open source principles, contribute, and collaborate effectively in open source. He is the elected chair of the CNCF Governing Board and the elected Chair of the OpenSSF Governing Board. He has delivered technical talks in 50+ countries and authored multiple books. He is a fitness and kindness enthusiast.
+
+## Another one
+
 Arun Gupta is vice president of Developer Programs at Intel Corporation. He has over two decades of experience building, growing, and fostering large developer communities at companies such as Apple, Amazon, Sun Microsystems, and now at Intel. He is the elected chair of the CNCF Governing Board and the elected Chair of the OpenSSF Governing Board. He has delivered technical talks in 50+ countries and authored multiple books. He is a fitness and kindness enthusiast.
 
 ## Longer version

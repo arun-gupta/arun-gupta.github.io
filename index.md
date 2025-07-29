@@ -1,5 +1,12 @@
 # Arun Gupta Bio
 
+## Latest
+
+Arun Gupta is a globally recognized expert in developer relations, open source strategy, and go-to-market innovation. With over 25 years of experience at Intel, Apple, Amazon, and Red Hat, he’s built developer communities that drive adoption and aligned DevRel with product, marketing, and sales to create lasting champions. Arun advocates mindfulness, kindness, and developer empathy as the foundation of modern DevRel.
+
+He chaired the CNCF and OpenSSF governing boards, leading ecosystem growth and open source security initiatives. Arun also helped Fortune 100 companies embrace open collaboration through founding multiple open source program offices. A global speaker and author, Arun has keynoted in 50+ countries, is a Docker Captain and Java Champion, and founded Devoxx4Kids USA. He actively supports initiatives like TEDAI and the UN’s Tech Over Hackathon.
+
+
 ## 500 character version
 Arun Gupta is vice president of Developer Programs at Intel Corporation. He has over two decades of experience building, growing, and fostering large developer communities at companies such as Amazon, Apple, Sun Microsystems, and Intel. He has taken these companies through systemic changes to embrace open source principles, contribute, and collaborate effectively in open source. He is the elected chair of the CNCF Governing Board and the elected Chair of the OpenSSF Governing Board. He has delivered technical talks in 50+ countries and authored multiple books. He is a fitness and kindness enthusiast.
 

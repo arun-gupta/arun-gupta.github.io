@@ -2,7 +2,7 @@
 
 ## Latest
 
-Arun Gupta is a globally recognized expert in developer relations, open source strategy, and go-to-market innovation. He is the VP of Developer Experience at JetBrains, leading the effort to connect with the global developer community and external partners. With over 25 years of experience at Intel, Apple, Amazon, and Red Hat, he’s built developer communities that drive adoption and aligned DevRel with product, marketing, and sales to create lasting champions. Arun advocates mindfulness, kindness, and developer empathy as the foundation of modern DevRel.
+Arun Gupta is a globally recognized expert in developer relations, open source strategy, and go-to-market innovation. He is the VP of Developer Experience at JetBrains, leading cross-functional teams spanning Product Marketing, Developer Advocacy, Community Marketing, GTM, and JetBrains Academy. With over 25 years of experience at Intel, Apple, Amazon, and Red Hat, he’s built developer communities that drive adoption and aligned DevRel with product, marketing, and sales to create lasting champions. Arun advocates mindfulness, kindness, and developer empathy as the foundation of modern DevRel.
 
 He chaired the CNCF and OpenSSF governing boards, leading ecosystem growth and open source security initiatives. Arun also helped Fortune 100 companies embrace open collaboration through founding multiple open source program offices. A global speaker and author, Arun has keynoted in 50+ countries, is a Docker Captain and Java Champion, and founded Devoxx4Kids USA. He actively leads initiatives like TEDAI and the UN’s Tech Over Hackathon.
 

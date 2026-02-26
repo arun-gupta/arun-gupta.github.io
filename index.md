@@ -8,7 +8,7 @@ He chaired the CNCF and OpenSSF governing boards, leading ecosystem growth and o
 
 
 ## 500 character version
-Arun Gupta is vice president of DevEx at JetBrains. He has over two decades of experience fostering developer communities at companies such as Amazon, Apple, Oracle, and Intel. He has taken these companies through systemic changes to embrace open source principles, contribute, and collaborate effectively in open source. He is ex-Chair of the CNCF and OpenSSF Governing Board. He has delivered technical talks in 50+ countries and authored multiple books. He is a fitness and kindness enthusiast.
+Arun Gupta is vice president of DevEx at JetBrains. He has 25+ years of experience fostering developer communities at companies such as Sun/Oracle, Amazon, Apple, and Intel. He has taken these companies through systemic changes to embrace open source principles, contribute, and collaborate effectively in open source. He is the ex-Chair of the CNCF and OpenSSF Governing Board. He has delivered technical talks in 50+ countries and authored multiple books. He is a fitness and kindness enthusiast.
 
 ## Another one
 

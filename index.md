@@ -2,10 +2,11 @@
 
 ## Latest
 
-Arun Gupta is a globally recognized expert in developer relations, open source strategy, and go-to-market innovation. He has held leadership roles at companies including Amazon, Apple, Red Hat, Oracle, Intel, and JetBrains, and has been deeply involved with foundations such as CNCF and OpenSSF. Arun is known for building and scaling open source communities, driving ecosystem adoption, and shaping governance models that balance technical excellence with community health. He has built developer communities that drive adoption and aligned DevRel with product, marketing, and sales to create lasting champions. Arun advocates mindfulness, kindness, and developer empathy as the foundation of modern DevRel.
+Arun Gupta is a globally recognized leader in open source, cloud-native ecosystems, and developer relations. He has held leadership roles at Amazon, Apple, Red Hat, Oracle, Intel, and JetBrains, and has been deeply involved with foundations such as CNCF and OpenSSF. Arun is known for building and scaling open source communities, driving ecosystem adoption, and shaping governance models that balance technical excellence with community health, grounded in a leadership style that emphasizes mindfulness, kindness, and developer empathy.
 
-He chaired the CNCF and OpenSSF governing boards, leading ecosystem growth and open source security initiatives. Arun also helped Fortune 100 companies embrace open collaboration through founding multiple open source program offices. A global speaker and author, Arun has keynoted in 50+ countries, is a Docker Captain and Java Champion, and founded Devoxx4Kids USA. He actively leads initiatives like the UN’s Tech Over Hackathon.
+He served as Chair of the CNCF and OpenSSF Governing Boards, where he helped guide ecosystem growth and advance open source security initiatives. He has also helped Fortune 100 companies adopt open collaboration by founding and scaling open source program offices.
 
+A global speaker and author, Arun has delivered keynotes in 50+ countries, is a Docker Captain and Java Champion, and founded Devoxx4Kids USA. He continues to support global initiatives including UN-led technology hackathons.
 
 ## 500 character version
 Arun Gupta is vice president of DevEx at JetBrains. He has 25+ years of experience fostering developer communities at companies such as Sun/Oracle, Amazon, Apple, and Intel. He has taken these companies through systemic changes to embrace open source principles, contribute, and collaborate effectively in open source. He is the ex-Chair of the CNCF and OpenSSF Governing Board. He has delivered technical talks in 50+ countries and authored multiple books. He is a fitness and kindness enthusiast.

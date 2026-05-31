@@ -9,7 +9,7 @@ He served as Chair of the CNCF and OpenSSF Governing Boards, where he helped gui
 A global speaker and author, Arun has delivered keynotes in 50+ countries, is a Docker Captain and Java Champion, and founded Devoxx4Kids USA. He continues to support global initiatives including UN-led technology hackathons.
 
 ## 500 character version
-Arun Gupta is Director of Open Source and Developer Platform at NVIDIA. He has 25+ years of experience fostering developer communities at companies such as Oracle, Amazon, Apple, and Intel. He has taken these companies through systemic changes to embrace open source principles, contribute, and collaborate effectively in open source. He is the ex-Chair of the CNCF and OpenSSF Governing Board. He has delivered technical talks in 50+ countries and authored multiple books. He is a fitness and kindness enthusiast.
+Arun Gupta is Director of Open Source and Developer Platform at NVIDIA. He has 25+ years of experience fostering developer communities at companies such as Oracle, Amazon, Apple, and Intel. He has led these companies through systemic changes to embrace open-source principles, contribute, and collaborate effectively in open source. He is the former Chair of the CNCF and OpenSSF Governing Boards. He has authored multiple books and is an enthusiast of fitness and kindness.
 
 ## Another one
 

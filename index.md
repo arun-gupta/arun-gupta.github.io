@@ -2,7 +2,7 @@
 
 ## Latest
 
-Arun Gupta is a globally recognized leader in open source, cloud-native ecosystems, and developer relations. He is the Director of Open Source Ecosystem and Developer platform at NVIDIA. He has held leadership roles at Amazon, Apple, Red Hat, Oracle, Intel, and JetBrains, and has been deeply involved with foundations such as CNCF and OpenSSF. Arun is known for building and scaling open source communities, driving ecosystem adoption, and shaping governance models that balance technical excellence with community health, grounded in a leadership style that emphasizes mindfulness, kindness, and developer empathy.
+Arun Gupta is a globally recognized leader in open source and developer communities. He is the Director of Open Source Ecosystem and Developer Platform at NVIDIA. He has held leadership roles at Amazon, Apple, Red Hat, Oracle, Intel, and JetBrains, and has been deeply involved with foundations such as CNCF and OpenSSF. Arun is known for building and scaling open source communities, driving ecosystem adoption, and shaping governance models that balance technical excellence with community health, grounded in a leadership style that emphasizes mindfulness, kindness, and developer empathy.
 
 He served as Chair of the CNCF and OpenSSF Governing Boards, where he helped guide ecosystem growth and advance open source security initiatives. He has also helped Fortune 100 companies adopt open collaboration by founding and scaling open source program offices.
 
